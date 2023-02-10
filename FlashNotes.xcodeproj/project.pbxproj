@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		A72A122A29964AC20015221A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A122929964AC20015221A /* AppDelegate.swift */; };
 		A72A122C29964AC20015221A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A122B29964AC20015221A /* SceneDelegate.swift */; };
-		A72A122E29964AC20015221A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A122D29964AC20015221A /* ViewController.swift */; };
-		A72A123129964AC20015221A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A72A122F29964AC20015221A /* Main.storyboard */; };
 		A72A123329964AC30015221A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A72A123229964AC30015221A /* Assets.xcassets */; };
 		A72A123629964AC30015221A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A72A123429964AC30015221A /* LaunchScreen.storyboard */; };
 		A72A123F29965A630015221A /* ModernRIBs in Frameworks */ = {isa = PBXBuildFile; productRef = A72A123E29965A630015221A /* ModernRIBs */; };
@@ -20,8 +18,6 @@
 		A72A122629964AC20015221A /* FlashNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A72A122929964AC20015221A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A72A122B29964AC20015221A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A72A122D29964AC20015221A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A72A123029964AC20015221A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A72A123229964AC30015221A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A72A123529964AC30015221A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A72A123729964AC30015221A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,15 +54,21 @@
 		A72A122829964AC20015221A /* FlashNotes */ = {
 			isa = PBXGroup;
 			children = (
-				A72A122929964AC20015221A /* AppDelegate.swift */,
-				A72A122B29964AC20015221A /* SceneDelegate.swift */,
-				A72A122D29964AC20015221A /* ViewController.swift */,
-				A72A122F29964AC20015221A /* Main.storyboard */,
+				A72A12402996849E0015221A /* Application */,
 				A72A123229964AC30015221A /* Assets.xcassets */,
 				A72A123429964AC30015221A /* LaunchScreen.storyboard */,
 				A72A123729964AC30015221A /* Info.plist */,
 			);
 			path = FlashNotes;
+			sourceTree = "<group>";
+		};
+		A72A12402996849E0015221A /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				A72A122929964AC20015221A /* AppDelegate.swift */,
+				A72A122B29964AC20015221A /* SceneDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +137,6 @@
 			files = (
 				A72A123629964AC30015221A /* LaunchScreen.storyboard in Resources */,
 				A72A123329964AC30015221A /* Assets.xcassets in Resources */,
-				A72A123129964AC20015221A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,7 +147,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A72A122E29964AC20015221A /* ViewController.swift in Sources */,
 				A72A122A29964AC20015221A /* AppDelegate.swift in Sources */,
 				A72A122C29964AC20015221A /* SceneDelegate.swift in Sources */,
 			);
@@ -155,14 +155,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A72A122F29964AC20015221A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A72A123029964AC20015221A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A72A123429964AC30015221A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -300,7 +292,6 @@
 				INFOPLIST_FILE = FlashNotes/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -332,7 +323,6 @@
 				INFOPLIST_FILE = FlashNotes/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
