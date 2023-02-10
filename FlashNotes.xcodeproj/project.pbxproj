@@ -12,6 +12,11 @@
 		A72A123329964AC30015221A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A72A123229964AC30015221A /* Assets.xcassets */; };
 		A72A123629964AC30015221A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A72A123429964AC30015221A /* LaunchScreen.storyboard */; };
 		A72A123F29965A630015221A /* ModernRIBs in Frameworks */ = {isa = PBXBuildFile; productRef = A72A123E29965A630015221A /* ModernRIBs */; };
+		A72A12422996865F0015221A /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A12412996865F0015221A /* AppComponent.swift */; };
+		A72A1248299686B90015221A /* AppRootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A1244299686B90015221A /* AppRootRouter.swift */; };
+		A72A1249299686B90015221A /* AppRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A1245299686B90015221A /* AppRootViewController.swift */; };
+		A72A124A299686B90015221A /* AppRootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A1246299686B90015221A /* AppRootBuilder.swift */; };
+		A72A124B299686B90015221A /* AppRootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A1247299686B90015221A /* AppRootInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +26,11 @@
 		A72A123229964AC30015221A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A72A123529964AC30015221A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A72A123729964AC30015221A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A72A12412996865F0015221A /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
+		A72A1244299686B90015221A /* AppRootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootRouter.swift; sourceTree = "<group>"; };
+		A72A1245299686B90015221A /* AppRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootViewController.swift; sourceTree = "<group>"; };
+		A72A1246299686B90015221A /* AppRootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootBuilder.swift; sourceTree = "<group>"; };
+		A72A1247299686B90015221A /* AppRootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				A72A12402996849E0015221A /* Application */,
+				A72A12432996868E0015221A /* AppRoot */,
 				A72A123229964AC30015221A /* Assets.xcassets */,
 				A72A123429964AC30015221A /* LaunchScreen.storyboard */,
 				A72A123729964AC30015221A /* Info.plist */,
@@ -67,8 +78,20 @@
 			children = (
 				A72A122929964AC20015221A /* AppDelegate.swift */,
 				A72A122B29964AC20015221A /* SceneDelegate.swift */,
+				A72A12412996865F0015221A /* AppComponent.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		A72A12432996868E0015221A /* AppRoot */ = {
+			isa = PBXGroup;
+			children = (
+				A72A1244299686B90015221A /* AppRootRouter.swift */,
+				A72A1247299686B90015221A /* AppRootInteractor.swift */,
+				A72A1246299686B90015221A /* AppRootBuilder.swift */,
+				A72A1245299686B90015221A /* AppRootViewController.swift */,
+			);
+			path = AppRoot;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,8 +170,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A72A1249299686B90015221A /* AppRootViewController.swift in Sources */,
+				A72A1248299686B90015221A /* AppRootRouter.swift in Sources */,
 				A72A122A29964AC20015221A /* AppDelegate.swift in Sources */,
+				A72A124B299686B90015221A /* AppRootInteractor.swift in Sources */,
 				A72A122C29964AC20015221A /* SceneDelegate.swift in Sources */,
+				A72A12422996865F0015221A /* AppComponent.swift in Sources */,
+				A72A124A299686B90015221A /* AppRootBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
