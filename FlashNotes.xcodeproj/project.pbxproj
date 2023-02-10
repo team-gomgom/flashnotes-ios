@@ -13,6 +13,7 @@
 		A72A123129964AC20015221A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A72A122F29964AC20015221A /* Main.storyboard */; };
 		A72A123329964AC30015221A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A72A123229964AC30015221A /* Assets.xcassets */; };
 		A72A123629964AC30015221A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A72A123429964AC30015221A /* LaunchScreen.storyboard */; };
+		A72A123F29965A630015221A /* ModernRIBs in Frameworks */ = {isa = PBXBuildFile; productRef = A72A123E29965A630015221A /* ModernRIBs */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A72A123F29965A630015221A /* ModernRIBs in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = FlashNotes;
+			packageProductDependencies = (
+				A72A123E29965A630015221A /* ModernRIBs */,
+			);
 			productName = FlashNotes;
 			productReference = A72A122629964AC20015221A /* FlashNotes.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,9 @@
 				Base,
 			);
 			mainGroup = A72A121D29964AC20015221A;
+			packageReferences = (
+				A72A123D29965A630015221A /* XCRemoteSwiftPackageReference "ModernRIBs" */,
+			);
 			productRefGroup = A72A122729964AC20015221A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -366,6 +374,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A72A123D29965A630015221A /* XCRemoteSwiftPackageReference "ModernRIBs" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DevYeom/ModernRIBs.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A72A123E29965A630015221A /* ModernRIBs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A72A123D29965A630015221A /* XCRemoteSwiftPackageReference "ModernRIBs" */;
+			productName = ModernRIBs;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A72A121E29964AC20015221A /* Project object */;
 }
