@@ -9,21 +9,30 @@
 /* Begin PBXBuildFile section */
 		A72A122A29964AC20015221A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A122929964AC20015221A /* AppDelegate.swift */; };
 		A72A122C29964AC20015221A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A122B29964AC20015221A /* SceneDelegate.swift */; };
-		A72A122E29964AC20015221A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A122D29964AC20015221A /* ViewController.swift */; };
-		A72A123129964AC20015221A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A72A122F29964AC20015221A /* Main.storyboard */; };
 		A72A123329964AC30015221A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A72A123229964AC30015221A /* Assets.xcassets */; };
 		A72A123629964AC30015221A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A72A123429964AC30015221A /* LaunchScreen.storyboard */; };
+		A72A123F29965A630015221A /* ModernRIBs in Frameworks */ = {isa = PBXBuildFile; productRef = A72A123E29965A630015221A /* ModernRIBs */; };
+		A72A12422996865F0015221A /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A12412996865F0015221A /* AppComponent.swift */; };
+		A72A1248299686B90015221A /* AppRootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A1244299686B90015221A /* AppRootRouter.swift */; };
+		A72A1249299686B90015221A /* AppRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A1245299686B90015221A /* AppRootViewController.swift */; };
+		A72A124A299686B90015221A /* AppRootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A1246299686B90015221A /* AppRootBuilder.swift */; };
+		A72A124B299686B90015221A /* AppRootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A1247299686B90015221A /* AppRootInteractor.swift */; };
+		A78CA28E299B825F006A89F6 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = A78CA28D299B825F006A89F6 /* splash.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A72A122629964AC20015221A /* FlashNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A72A122929964AC20015221A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A72A122B29964AC20015221A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A72A122D29964AC20015221A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A72A123029964AC20015221A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A72A123229964AC30015221A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A72A123529964AC30015221A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A72A123729964AC30015221A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A72A12412996865F0015221A /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
+		A72A1244299686B90015221A /* AppRootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootRouter.swift; sourceTree = "<group>"; };
+		A72A1245299686B90015221A /* AppRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootViewController.swift; sourceTree = "<group>"; };
+		A72A1246299686B90015221A /* AppRootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootBuilder.swift; sourceTree = "<group>"; };
+		A72A1247299686B90015221A /* AppRootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootInteractor.swift; sourceTree = "<group>"; };
+		A78CA28D299B825F006A89F6 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A72A123F29965A630015221A /* ModernRIBs in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +66,43 @@
 		A72A122829964AC20015221A /* FlashNotes */ = {
 			isa = PBXGroup;
 			children = (
-				A72A122929964AC20015221A /* AppDelegate.swift */,
-				A72A122B29964AC20015221A /* SceneDelegate.swift */,
-				A72A122D29964AC20015221A /* ViewController.swift */,
-				A72A122F29964AC20015221A /* Main.storyboard */,
-				A72A123229964AC30015221A /* Assets.xcassets */,
-				A72A123429964AC30015221A /* LaunchScreen.storyboard */,
-				A72A123729964AC30015221A /* Info.plist */,
+				A72A12402996849E0015221A /* Application */,
+				A72A12432996868E0015221A /* AppRoot */,
+				A78CA28C299B7F08006A89F6 /* Resources */,
 			);
 			path = FlashNotes;
+			sourceTree = "<group>";
+		};
+		A72A12402996849E0015221A /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				A72A123429964AC30015221A /* LaunchScreen.storyboard */,
+				A72A122929964AC20015221A /* AppDelegate.swift */,
+				A72A122B29964AC20015221A /* SceneDelegate.swift */,
+				A72A12412996865F0015221A /* AppComponent.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		A72A12432996868E0015221A /* AppRoot */ = {
+			isa = PBXGroup;
+			children = (
+				A72A1244299686B90015221A /* AppRootRouter.swift */,
+				A72A1247299686B90015221A /* AppRootInteractor.swift */,
+				A72A1246299686B90015221A /* AppRootBuilder.swift */,
+				A72A1245299686B90015221A /* AppRootViewController.swift */,
+			);
+			path = AppRoot;
+			sourceTree = "<group>";
+		};
+		A78CA28C299B7F08006A89F6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A78CA28D299B825F006A89F6 /* splash.png */,
+				A72A123229964AC30015221A /* Assets.xcassets */,
+				A72A123729964AC30015221A /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +121,9 @@
 			dependencies = (
 			);
 			name = FlashNotes;
+			packageProductDependencies = (
+				A72A123E29965A630015221A /* ModernRIBs */,
+			);
 			productName = FlashNotes;
 			productReference = A72A122629964AC20015221A /* FlashNotes.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +152,9 @@
 				Base,
 			);
 			mainGroup = A72A121D29964AC20015221A;
+			packageReferences = (
+				A72A123D29965A630015221A /* XCRemoteSwiftPackageReference "ModernRIBs" */,
+			);
 			productRefGroup = A72A122729964AC20015221A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,8 +170,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A72A123629964AC30015221A /* LaunchScreen.storyboard in Resources */,
+				A78CA28E299B825F006A89F6 /* splash.png in Resources */,
 				A72A123329964AC30015221A /* Assets.xcassets in Resources */,
-				A72A123129964AC20015221A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +182,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A72A122E29964AC20015221A /* ViewController.swift in Sources */,
+				A72A1249299686B90015221A /* AppRootViewController.swift in Sources */,
+				A72A1248299686B90015221A /* AppRootRouter.swift in Sources */,
 				A72A122A29964AC20015221A /* AppDelegate.swift in Sources */,
+				A72A124B299686B90015221A /* AppRootInteractor.swift in Sources */,
 				A72A122C29964AC20015221A /* SceneDelegate.swift in Sources */,
+				A72A12422996865F0015221A /* AppComponent.swift in Sources */,
+				A72A124A299686B90015221A /* AppRootBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A72A122F29964AC20015221A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A72A123029964AC20015221A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A72A123429964AC30015221A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -216,7 +256,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +310,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -289,22 +329,25 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3CZP576P62;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FlashNotes/Info.plist;
+				INFOPLIST_FILE = FlashNotes/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dongcheon.FlashNotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -317,22 +360,25 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3CZP576P62;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FlashNotes/Info.plist;
+				INFOPLIST_FILE = FlashNotes/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dongcheon.FlashNotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -358,6 +404,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A72A123D29965A630015221A /* XCRemoteSwiftPackageReference "ModernRIBs" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DevYeom/ModernRIBs.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A72A123E29965A630015221A /* ModernRIBs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A72A123D29965A630015221A /* XCRemoteSwiftPackageReference "ModernRIBs" */;
+			productName = ModernRIBs;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A72A121E29964AC20015221A /* Project object */;
 }
