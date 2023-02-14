@@ -62,6 +62,9 @@ private extension Requestable {
         queryItems.append(URLQueryItem(name: key, value: "\(value)"))
       }
     }
+    if let authorization = authorization {
+      queryItems.append(URLQueryItem(name: "Authorization", value: authorization))
+    }
     urlComponents.queryItems = queryItems.isEmpty ? nil : queryItems
 
     guard let url = urlComponents.url else {
