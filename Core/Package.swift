@@ -8,6 +8,10 @@ let package = Package(
     platforms: [.iOS(.v14)],
     products: [
       .library(
+        name: "CombineUtil",
+        targets: ["CombineUtil"]
+      ),
+      .library(
         name: "Network",
         targets: ["Network"]
       ),
@@ -15,15 +19,36 @@ let package = Package(
         name: "NetworkImp",
         targets: ["NetworkImp"]
       ),
+      .library(
+        name: "RIBsUtil",
+        targets: ["RIBsUtil"]
+      ),
     ],
-    dependencies: [],
+    dependencies: [
+      .package(
+        url: "https://github.com/CombineCommunity/CombineExt",
+        from: "1.0.0"
+      ),
+      .package(
+        url: "https://github.com/DevYeom/ModernRIBs",
+        .upToNextMajor(from: "1.0.0")
+      ),
+    ],
     targets: [
+      .target(
+        name: "CombineUtil",
+        dependencies: ["CombineExt"]
+      ),
       .target(
         name: "Network"
       ),
       .target(
         name: "NetworkImp",
         dependencies: ["Network"]
+      ),
+      .target(
+        name: "RIBsUtil",
+        dependencies: ["ModernRIBs"]
       ),
     ]
 )

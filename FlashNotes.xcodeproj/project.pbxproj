@@ -20,6 +20,8 @@
 		A72AF19E299B8CE500F18527 /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = A72AF19D299B8CE500F18527 /* Network */; };
 		A78CA28E299B825F006A89F6 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = A78CA28D299B825F006A89F6 /* splash.png */; };
 		A7A8A4B1299B912200D9C087 /* NetworkImp in Frameworks */ = {isa = PBXBuildFile; productRef = A7A8A4B0299B912200D9C087 /* NetworkImp */; };
+		A7A8A4B3299BEC4800D9C087 /* CombineUtil in Frameworks */ = {isa = PBXBuildFile; productRef = A7A8A4B2299BEC4800D9C087 /* CombineUtil */; };
+		A7A8A4B5299BEDEF00D9C087 /* RIBsUtil in Frameworks */ = {isa = PBXBuildFile; productRef = A7A8A4B4299BEDEF00D9C087 /* RIBsUtil */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 			files = (
 				A72A123F29965A630015221A /* ModernRIBs in Frameworks */,
 				A7A8A4B1299B912200D9C087 /* NetworkImp in Frameworks */,
+				A7A8A4B3299BEC4800D9C087 /* CombineUtil in Frameworks */,
+				A7A8A4B5299BEDEF00D9C087 /* RIBsUtil in Frameworks */,
 				A72AF19E299B8CE500F18527 /* Network in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +143,8 @@
 				A72A123E29965A630015221A /* ModernRIBs */,
 				A72AF19D299B8CE500F18527 /* Network */,
 				A7A8A4B0299B912200D9C087 /* NetworkImp */,
+				A7A8A4B2299BEC4800D9C087 /* CombineUtil */,
+				A7A8A4B4299BEDEF00D9C087 /* RIBsUtil */,
 			);
 			productName = FlashNotes;
 			productReference = A72A122629964AC20015221A /* FlashNotes.app */;
@@ -445,6 +451,14 @@
 		A7A8A4B0299B912200D9C087 /* NetworkImp */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = NetworkImp;
+		};
+		A7A8A4B2299BEC4800D9C087 /* CombineUtil */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CombineUtil;
+		};
+		A7A8A4B4299BEDEF00D9C087 /* RIBsUtil */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RIBsUtil;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
