@@ -8,6 +8,10 @@ let package = Package(
     platforms: [.iOS(.v14)],
     products: [
       .library(
+        name: "CombineUtil",
+        targets: ["CombineUtil"]
+      ),
+      .library(
         name: "Network",
         targets: ["Network"]
       ),
@@ -16,8 +20,17 @@ let package = Package(
         targets: ["NetworkImp"]
       ),
     ],
-    dependencies: [],
+    dependencies: [
+      .package(
+        url: "https://github.com/CombineCommunity/CombineExt",
+        from: "1.0.0"
+      ),
+    ],
     targets: [
+      .target(
+        name: "CombineUtil",
+        dependencies: ["CombineExt"]
+      ),
       .target(
         name: "Network"
       ),
