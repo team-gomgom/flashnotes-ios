@@ -5,7 +5,17 @@ import PackageDescription
 
 let package = Package(
     name: "Core",
-    products: [],
+    platforms: [.iOS(.v14)],
+    products: [
+      .library(
+        name: "Network",
+        targets: ["Network"]
+      ),
+    ],
     dependencies: [],
-    targets: []
+    targets: [
+      .target(
+        name: "Network"
+      ),
+    ]
 )
