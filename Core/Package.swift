@@ -19,11 +19,19 @@ let package = Package(
         name: "NetworkImp",
         targets: ["NetworkImp"]
       ),
+      .library(
+        name: "RIBsUtil",
+        targets: ["RIBsUtil"]
+      ),
     ],
     dependencies: [
       .package(
         url: "https://github.com/CombineCommunity/CombineExt",
         from: "1.0.0"
+      ),
+      .package(
+        url: "https://github.com/DevYeom/ModernRIBs",
+        .upToNextMajor(from: "1.0.0")
       ),
     ],
     targets: [
@@ -37,6 +45,10 @@ let package = Package(
       .target(
         name: "NetworkImp",
         dependencies: ["Network"]
+      ),
+      .target(
+        name: "RIBsUtil",
+        dependencies: ["ModernRIBs"]
       ),
     ]
 )
