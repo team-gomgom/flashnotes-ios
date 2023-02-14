@@ -11,11 +11,19 @@ let package = Package(
         name: "Network",
         targets: ["Network"]
       ),
+      .library(
+        name: "NetworkImp",
+        targets: ["NetworkImp"]
+      ),
     ],
     dependencies: [],
     targets: [
       .target(
         name: "Network"
+      ),
+      .target(
+        name: "NetworkImp",
+        dependencies: ["Network"]
       ),
     ]
 )
