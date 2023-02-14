@@ -53,7 +53,7 @@ private extension Requestable {
   func url() throws -> URL {
     let fullPath = "\(baseURL)\(path)"
     guard var urlComponents = URLComponents(string: fullPath) else {
-      throw NetworkError.decodeFailed
+      throw NetworkError.urlComponentFailed
     }
 
     var queryItems = [URLQueryItem]()
@@ -65,7 +65,7 @@ private extension Requestable {
     urlComponents.queryItems = queryItems.isEmpty ? nil : queryItems
 
     guard let url = urlComponents.url else {
-      throw NetworkError.decodeFailed
+      throw NetworkError.urlComponentFailed
     }
 
     return url
