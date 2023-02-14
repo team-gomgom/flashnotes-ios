@@ -66,9 +66,7 @@
 			children = (
 				A72A12402996849E0015221A /* Application */,
 				A72A12432996868E0015221A /* AppRoot */,
-				A72A123229964AC30015221A /* Assets.xcassets */,
-				A72A123429964AC30015221A /* LaunchScreen.storyboard */,
-				A72A123729964AC30015221A /* Info.plist */,
+				A78CA28C299B7F08006A89F6 /* Resources */,
 			);
 			path = FlashNotes;
 			sourceTree = "<group>";
@@ -76,6 +74,7 @@
 		A72A12402996849E0015221A /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				A72A123429964AC30015221A /* LaunchScreen.storyboard */,
 				A72A122929964AC20015221A /* AppDelegate.swift */,
 				A72A122B29964AC20015221A /* SceneDelegate.swift */,
 				A72A12412996865F0015221A /* AppComponent.swift */,
@@ -92,6 +91,15 @@
 				A72A1245299686B90015221A /* AppRootViewController.swift */,
 			);
 			path = AppRoot;
+			sourceTree = "<group>";
+		};
+		A78CA28C299B7F08006A89F6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A72A123229964AC30015221A /* Assets.xcassets */,
+				A72A123729964AC30015221A /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,7 +325,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3CZP576P62;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FlashNotes/Info.plist;
+				INFOPLIST_FILE = FlashNotes/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -348,7 +356,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3CZP576P62;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FlashNotes/Info.plist;
+				INFOPLIST_FILE = FlashNotes/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
