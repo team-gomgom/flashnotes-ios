@@ -36,6 +36,7 @@
 		A72A1245299686B90015221A /* AppRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootViewController.swift; sourceTree = "<group>"; };
 		A72A1246299686B90015221A /* AppRootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootBuilder.swift; sourceTree = "<group>"; };
 		A72A1247299686B90015221A /* AppRootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootInteractor.swift; sourceTree = "<group>"; };
+		A7812C78299C8D63005EA4CD /* UI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = UI; sourceTree = "<group>"; };
 		A78C5595299B8875004D6A82 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
 		A78CA28D299B825F006A89F6 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,6 +60,7 @@
 		A72A121D29964AC20015221A = {
 			isa = PBXGroup;
 			children = (
+				A7812C78299C8D63005EA4CD /* UI */,
 				A78C5595299B8875004D6A82 /* Core */,
 				A72A122829964AC20015221A /* FlashNotes */,
 				A72A122729964AC20015221A /* Products */,
