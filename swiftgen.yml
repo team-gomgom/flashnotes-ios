@@ -31,6 +31,15 @@
          publicAccess: true
          enumName: Colors
        output: Colors.swift
+   inputs:
+     - Images.xcassets
+   outputs:
+     - templateName: swift5
+       params:
+         forceProvidesNamespaces: true
+         publicAccess: true
+         enumName: Images
+       output: Images.swift
 
 
 ## Generate constants for your storyboards and XIBs.
