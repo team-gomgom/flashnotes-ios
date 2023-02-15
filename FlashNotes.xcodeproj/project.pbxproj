@@ -23,6 +23,8 @@
 		A7A8A4B1299B912200D9C087 /* NetworkImp in Frameworks */ = {isa = PBXBuildFile; productRef = A7A8A4B0299B912200D9C087 /* NetworkImp */; };
 		A7A8A4B3299BEC4800D9C087 /* CombineUtil in Frameworks */ = {isa = PBXBuildFile; productRef = A7A8A4B2299BEC4800D9C087 /* CombineUtil */; };
 		A7A8A4B5299BEDEF00D9C087 /* RIBsUtil in Frameworks */ = {isa = PBXBuildFile; productRef = A7A8A4B4299BEDEF00D9C087 /* RIBsUtil */; };
+		A7BB29B8299CB947002B74EC /* SlideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = A7BB29B7299CB947002B74EC /* SlideMenu */; };
+		A7BB29BA299CB94A002B74EC /* SlideMenuImp in Frameworks */ = {isa = PBXBuildFile; productRef = A7BB29B9299CB94A002B74EC /* SlideMenuImp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,9 +50,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7BB29BA299CB94A002B74EC /* SlideMenuImp in Frameworks */,
 				A72A123F29965A630015221A /* ModernRIBs in Frameworks */,
 				A7A8A4B1299B912200D9C087 /* NetworkImp in Frameworks */,
 				A7A8A4B3299BEC4800D9C087 /* CombineUtil in Frameworks */,
+				A7BB29B8299CB947002B74EC /* SlideMenu in Frameworks */,
 				A73D9E7E299C906500371A50 /* FlashNotesUI in Frameworks */,
 				A7A8A4B5299BEDEF00D9C087 /* RIBsUtil in Frameworks */,
 				A72AF19E299B8CE500F18527 /* Network in Frameworks */,
@@ -63,9 +67,9 @@
 		A72A121D29964AC20015221A = {
 			isa = PBXGroup;
 			children = (
+				A78C5595299B8875004D6A82 /* Core */,
 				A7E58738299CA59300BCA757 /* Feature */,
 				A7812C78299C8D63005EA4CD /* UI */,
-				A78C5595299B8875004D6A82 /* Core */,
 				A72A122829964AC20015221A /* FlashNotes */,
 				A72A122729964AC20015221A /* Products */,
 				A72AF19C299B8CE500F18527 /* Frameworks */,
@@ -104,9 +108,9 @@
 		A72A12432996868E0015221A /* AppRoot */ = {
 			isa = PBXGroup;
 			children = (
-				A72A1244299686B90015221A /* AppRootRouter.swift */,
-				A72A1247299686B90015221A /* AppRootInteractor.swift */,
 				A72A1246299686B90015221A /* AppRootBuilder.swift */,
+				A72A1247299686B90015221A /* AppRootInteractor.swift */,
+				A72A1244299686B90015221A /* AppRootRouter.swift */,
 				A72A1245299686B90015221A /* AppRootViewController.swift */,
 			);
 			path = AppRoot;
@@ -152,6 +156,8 @@
 				A7A8A4B2299BEC4800D9C087 /* CombineUtil */,
 				A7A8A4B4299BEDEF00D9C087 /* RIBsUtil */,
 				A73D9E7D299C906500371A50 /* FlashNotesUI */,
+				A7BB29B7299CB947002B74EC /* SlideMenu */,
+				A7BB29B9299CB94A002B74EC /* SlideMenuImp */,
 			);
 			productName = FlashNotes;
 			productReference = A72A122629964AC20015221A /* FlashNotes.app */;
@@ -470,6 +476,14 @@
 		A7A8A4B4299BEDEF00D9C087 /* RIBsUtil */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RIBsUtil;
+		};
+		A7BB29B7299CB947002B74EC /* SlideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SlideMenu;
+		};
+		A7BB29B9299CB94A002B74EC /* SlideMenuImp */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SlideMenuImp;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
