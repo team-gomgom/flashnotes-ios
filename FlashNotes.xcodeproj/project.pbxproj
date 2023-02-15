@@ -40,6 +40,7 @@
 		A7812C78299C8D63005EA4CD /* UI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = UI; sourceTree = "<group>"; };
 		A78C5595299B8875004D6A82 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
 		A78CA28D299B825F006A89F6 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
+		A7E58738299CA59300BCA757 /* Feature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Feature; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +63,7 @@
 		A72A121D29964AC20015221A = {
 			isa = PBXGroup;
 			children = (
+				A7E58738299CA59300BCA757 /* Feature */,
 				A7812C78299C8D63005EA4CD /* UI */,
 				A78C5595299B8875004D6A82 /* Core */,
 				A72A122829964AC20015221A /* FlashNotes */,
