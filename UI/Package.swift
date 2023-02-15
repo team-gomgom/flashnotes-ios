@@ -6,7 +6,16 @@ import PackageDescription
 let package = Package(
     name: "UI",
     platforms: [.iOS(.v14)],
-    products: [],
+    products: [
+      .library(
+        name: "FlashNotesUI",
+        targets: ["FlashNotesUI"]
+      ),
+    ],
     dependencies: [],
-    targets: []
+    targets: [
+      .target(
+        name: "FlashNotesUI"
+      ),
+    ]
 )
