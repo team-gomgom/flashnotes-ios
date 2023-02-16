@@ -8,6 +8,14 @@ let package = Package(
     platforms: [.iOS(.v14)],
     products: [
       .library(
+        name: "Note",
+        targets: ["Note"]
+      ),
+      .library(
+        name: "NoteImp",
+        targets: ["NoteImp"]
+      ),
+      .library(
         name: "SlideMenu",
         targets: ["SlideMenu"]
       ),
@@ -25,6 +33,19 @@ let package = Package(
       .package(path: "../UI"),
     ],
     targets: [
+      .target(
+        name: "Note",
+        dependencies: ["ModernRIBs"]
+      ),
+      .target(
+        name: "NoteImp",
+        dependencies: [
+          "Note",
+          "ModernRIBs",
+          .product(name: "Entity", package: "Core"),
+          .product(name: "FlashNotesUI", package: "UI"),
+        ]
+      ),
       .target(
         name: "SlideMenu",
         dependencies: ["ModernRIBs"]

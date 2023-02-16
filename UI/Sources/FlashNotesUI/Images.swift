@@ -6,8 +6,10 @@ import UIKit
 // MARK: - Asset Catalogs
 
 public enum Images {
+  public static let icCards = ImageAsset(name: "ic_cards")
   public static let icLogoCharacter = ImageAsset(name: "ic_logo_character")
   public static let icLogoTitle = ImageAsset(name: "ic_logo_title")
+  public static let icMenu = ImageAsset(name: "ic_menu")
 }
 
 // MARK: - Implementation Details
