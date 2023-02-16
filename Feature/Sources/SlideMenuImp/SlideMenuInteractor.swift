@@ -15,8 +15,7 @@ protocol SlideMenuPresentable: Presentable {
 }
 
 final class SlideMenuInteractor: PresentableInteractor<SlideMenuPresentable>,
-                                 SlideMenuInteractable,
-                                 SlideMenuPresentableListener {
+                                 SlideMenuInteractable {
   weak var router: SlideMenuRouting?
   weak var listener: SlideMenuListener?
 
@@ -24,5 +23,21 @@ final class SlideMenuInteractor: PresentableInteractor<SlideMenuPresentable>,
     super.init(presenter: presenter)
 
     presenter.listener = self
+  }
+}
+
+// MARK: - SlideMenuPresentableListener
+
+extension SlideMenuInteractor: SlideMenuPresentableListener {
+  func didTapAddPageButton() {
+
+  }
+
+  func didTapSettingButton() {
+
+  }
+
+  func didSelectItem(at index: Int) {
+
   }
 }

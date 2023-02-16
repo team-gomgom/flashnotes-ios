@@ -9,7 +9,11 @@ import FlashNotesUI
 import ModernRIBs
 import UIKit
 
-protocol SlideMenuPresentableListener: AnyObject {}
+protocol SlideMenuPresentableListener: AnyObject {
+  func didTapAddPageButton()
+  func didTapSettingButton()
+  func didSelectItem(at index: Int)
+}
 
 final class SlideMenuViewController: UIViewController,
                                      SlideMenuPresentable,
@@ -18,19 +22,22 @@ final class SlideMenuViewController: UIViewController,
 
   private let pageListView = NoteListView()
   private let logoImageView = UIImageView(image: Images.icLogoTitle.image)
-  private let plusButton: FloatingButton = {
+  private lazy var plusButton: FloatingButton = {
     let configuration = UIImage.SymbolConfiguration(pointSize: 25, weight: .semibold)
     let image = UIImage(systemName: "plus", withConfiguration: configuration)
     let button = FloatingButton(image: image)
+    let action = #selector(plusButtonDidTap)
+    button.addTarget(self, action: action, for: .touchUpInside)
     button.setBackgorundColor(.white, for: .normal)
     button.setBackgorundColor(Colors.HighlightedWhite.color, for: .highlighted)
     return button
   }()
 
-  private let settingBarButton: UIBarButtonItem = {
+  private lazy var settingBarButton: UIBarButtonItem = {
     let configuration = UIImage.SymbolConfiguration(pointSize: 15, weight: .medium)
     let image = UIImage(systemName: "gearshape.fill", withConfiguration: configuration)
-    let button = UIBarButtonItem(image: image, style: .plain, target: nil, action: nil)
+    let action = #selector(settingButtonDidTap)
+    let button = UIBarButtonItem(image: image, style: .plain, target: self, action: action)
     button.tintColor = Colors.backgroundWhite.color
     return button
   }()
@@ -50,6 +57,8 @@ final class SlideMenuViewController: UIViewController,
     leftBarButtonView.addSubview(logoImageView)
     navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBarButtonView)
     navigationItem.rightBarButtonItem = settingBarButton
+
+    pageListView.delegate = self
   }
 
   private func setupLayout() {
@@ -71,5 +80,23 @@ final class SlideMenuViewController: UIViewController,
       plusButton.widthAnchor.constraint(equalToConstant: 50),
       plusButton.heightAnchor.constraint(equalToConstant: 50)
     ])
+  }
+
+  @objc
+  private func plusButtonDidTap() {
+    listener?.didTapAddPageButton()
+  }
+
+  @objc
+  private func settingButtonDidTap() {
+    listener?.didTapSettingButton()
+  }
+}
+
+// MARK: - UITableViewDelegate
+
+extension SlideMenuViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    listener?.didSelectItem(at: indexPath.row)
   }
 }
