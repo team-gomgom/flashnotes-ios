@@ -15,8 +15,7 @@ protocol NotePresentable: Presentable {
 }
 
 final class NoteInteractor: PresentableInteractor<NotePresentable>,
-                            NoteInteractable,
-                            NotePresentableListener {
+                            NoteInteractable {
   weak var router: NoteRouting?
   weak var listener: NoteListener?
 
@@ -25,4 +24,10 @@ final class NoteInteractor: PresentableInteractor<NotePresentable>,
 
     presenter.listener = self
   }
+}
+
+// MARK: - NotePresentableListener
+
+extension NoteInteractor: NotePresentableListener {
+  func didTapTrainingButton() {}
 }
