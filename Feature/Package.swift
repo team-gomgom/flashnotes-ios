@@ -21,6 +21,8 @@ let package = Package(
         url: "https://github.com/DevYeom/ModernRIBs",
         .upToNextMajor(from: "1.0.0")
       ),
+      .package(path: "../Core"),
+      .package(path: "../UI"),
     ],
     targets: [
       .target(
@@ -31,7 +33,9 @@ let package = Package(
         name: "SlideMenuImp",
         dependencies: [
           "SlideMenu",
-          "ModernRIBs"
+          "ModernRIBs",
+          .product(name: "Entity", package: "Core"),
+          .product(name: "FlashNotesUI", package: "UI"),
         ]
       ),
     ]

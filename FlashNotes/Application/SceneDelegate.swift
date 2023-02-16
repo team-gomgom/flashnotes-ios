@@ -20,6 +20,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   ) {
     guard let windowScene = scene as? UIWindowScene else { return }
     let window = UIWindow(windowScene: windowScene)
+    window.tintColor = .systemOrange
+
     self.window = window
     self.launchRouter = AppRootBuilder(dependency: AppComponent()).build()
     launchRouter?.launch(from: window)

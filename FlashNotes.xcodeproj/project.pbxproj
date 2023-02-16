@@ -25,6 +25,7 @@
 		A7A8A4B5299BEDEF00D9C087 /* RIBsUtil in Frameworks */ = {isa = PBXBuildFile; productRef = A7A8A4B4299BEDEF00D9C087 /* RIBsUtil */; };
 		A7BB29B8299CB947002B74EC /* SlideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = A7BB29B7299CB947002B74EC /* SlideMenu */; };
 		A7BB29BA299CB94A002B74EC /* SlideMenuImp in Frameworks */ = {isa = PBXBuildFile; productRef = A7BB29B9299CB94A002B74EC /* SlideMenuImp */; };
+		A7CB5982299DFC2F000F939D /* Entity in Frameworks */ = {isa = PBXBuildFile; productRef = A7CB5981299DFC2F000F939D /* Entity */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 				A7BB29B8299CB947002B74EC /* SlideMenu in Frameworks */,
 				A73D9E7E299C906500371A50 /* FlashNotesUI in Frameworks */,
 				A7A8A4B5299BEDEF00D9C087 /* RIBsUtil in Frameworks */,
+				A7CB5982299DFC2F000F939D /* Entity in Frameworks */,
 				A72AF19E299B8CE500F18527 /* Network in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,6 +160,7 @@
 				A73D9E7D299C906500371A50 /* FlashNotesUI */,
 				A7BB29B7299CB947002B74EC /* SlideMenu */,
 				A7BB29B9299CB94A002B74EC /* SlideMenuImp */,
+				A7CB5981299DFC2F000F939D /* Entity */,
 			);
 			productName = FlashNotes;
 			productReference = A72A122629964AC20015221A /* FlashNotes.app */;
@@ -484,6 +487,10 @@
 		A7BB29B9299CB94A002B74EC /* SlideMenuImp */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SlideMenuImp;
+		};
+		A7CB5981299DFC2F000F939D /* Entity */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Entity;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
