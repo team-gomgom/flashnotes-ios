@@ -20,7 +20,7 @@ final class SlideMenuViewController: UIViewController,
                                      SlideMenuViewControllable {
   weak var listener: SlideMenuPresentableListener?
 
-  private let pageListView = NoteListView()
+  private let noteListView = NoteListView()
   private let logoImageView: UIImageView = {
     let imageView = UIImageView(image: Images.icLogoTitle.image)
     imageView.contentMode = .scaleAspectFit
@@ -63,23 +63,23 @@ final class SlideMenuViewController: UIViewController,
     navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBarButtonView)
     navigationItem.rightBarButtonItem = settingBarButton
 
-    pageListView.delegate = self
+    noteListView.delegate = self
   }
 
   private func setupLayout() {
-    pageListView.translatesAutoresizingMaskIntoConstraints = false
+    noteListView.translatesAutoresizingMaskIntoConstraints = false
     plusButton.translatesAutoresizingMaskIntoConstraints = false
 
-    view.addSubview(pageListView)
+    view.addSubview(noteListView)
     view.addSubview(plusButton)
 
     let safeArea = view.safeAreaLayoutGuide
 
     NSLayoutConstraint.activate([
-      pageListView.topAnchor.constraint(equalTo: view.topAnchor),
-      pageListView.leftAnchor.constraint(equalTo: view.leftAnchor),
-      pageListView.rightAnchor.constraint(equalTo: view.rightAnchor),
-      pageListView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      noteListView.topAnchor.constraint(equalTo: view.topAnchor),
+      noteListView.leftAnchor.constraint(equalTo: view.leftAnchor),
+      noteListView.rightAnchor.constraint(equalTo: view.rightAnchor),
+      noteListView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
       plusButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
       plusButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -20),
       plusButton.widthAnchor.constraint(equalToConstant: 50),
