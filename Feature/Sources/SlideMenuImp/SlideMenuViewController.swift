@@ -21,7 +21,12 @@ final class SlideMenuViewController: UIViewController,
   weak var listener: SlideMenuPresentableListener?
 
   private let pageListView = NoteListView()
-  private let logoImageView = UIImageView(image: Images.icLogoTitle.image)
+  private let logoImageView: UIImageView = {
+    let imageView = UIImageView(image: Images.icLogoTitle.image)
+    imageView.contentMode = .scaleAspectFit
+    return imageView
+  }()
+
   private lazy var plusButton: FloatingButton = {
     let configuration = UIImage.SymbolConfiguration(pointSize: 25, weight: .semibold)
     let image = UIImage(systemName: "plus", withConfiguration: configuration)
