@@ -9,7 +9,9 @@ import FlashNotesUI
 import ModernRIBs
 import UIKit
 
-protocol NotePresentableListener: AnyObject {}
+protocol NotePresentableListener: AnyObject {
+  func didTapTrainingButton()
+}
 
 final class NoteViewController: UIViewController,
                                 NotePresentable,
@@ -62,5 +64,6 @@ final class NoteViewController: UIViewController,
 
   @objc
   private func trainingButtonDidTap() {
+    listener?.didTapTrainingButton()
   }
 }
