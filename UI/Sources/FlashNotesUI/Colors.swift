@@ -8,6 +8,8 @@ import UIKit
 public enum Colors {
   public static let backgroundOrange = ColorAsset(name: "BackgroundOrange")
   public static let backgroundWhite = ColorAsset(name: "BackgroundWhite")
+  public static let HighlightedOrange = ColorAsset(name: "HighlightedOrange")
+  public static let HighlightedWhite = ColorAsset(name: "HighlightedWhite")
   public static let dimLight = ColorAsset(name: "DimLight")
   public static let primaryOrange = ColorAsset(name: "PrimaryOrange")
   public static let textBlack = ColorAsset(name: "TextBlack")
