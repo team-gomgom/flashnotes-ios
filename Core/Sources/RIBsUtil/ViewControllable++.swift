@@ -19,11 +19,12 @@ public extension ViewControllable {
     return top
   }
 
-  func present(
+  func presentWithFullScreen(
     _ viewControllable: ViewControllable,
     animated: Bool,
-    completion: (() -> Void)?
+    completion: (() -> Void)? = nil
   ) {
+    viewControllable.uiviewController.modalPresentationStyle = .fullScreen
     uiviewController.present(
       viewControllable.uiviewController,
       animated: animated,
@@ -31,7 +32,7 @@ public extension ViewControllable {
     )
   }
 
-  func dismiss(animated: Bool, completion: (() -> Void)?) {
+  func dismiss(animated: Bool, completion: (() -> Void)? = nil) {
     uiviewController.dismiss(animated: animated, completion: completion)
   }
 
