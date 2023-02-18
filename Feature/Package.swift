@@ -57,7 +57,10 @@ let package = Package(
         name: "LoggedInImp",
         dependencies: [
           "LoggedIn",
-          "ModernRIBs"
+          "Main",
+          "MainImp",
+          "ModernRIBs",
+          .product(name: "RIBsUtil", package: "Core"),
         ]
       ),
       .target(
