@@ -8,6 +8,14 @@ let package = Package(
     platforms: [.iOS(.v14)],
     products: [
       .library(
+        name: "LoggedIn",
+        targets: ["LoggedIn"]
+      ),
+      .library(
+        name: "LoggedInImp",
+        targets: ["LoggedInImp"]
+      ),
+      .library(
         name: "Note",
         targets: ["Note"]
       ),
@@ -33,6 +41,17 @@ let package = Package(
       .package(path: "../UI"),
     ],
     targets: [
+      .target(
+        name: "LoggedIn",
+        dependencies: ["ModernRIBs"]
+      ),
+      .target(
+        name: "LoggedInImp",
+        dependencies: [
+          "LoggedIn",
+          "ModernRIBs"
+        ]
+      ),
       .target(
         name: "Note",
         dependencies: ["ModernRIBs"]
