@@ -14,13 +14,13 @@ final class NoteComponent: Component<NoteDependency> {}
 
 // MARK: - Builder
 
-final class NoteBuilder: Builder<NoteDependency>,
-                         NoteBuildable {
-  override init(dependency: NoteDependency) {
+public final class NoteBuilder: Builder<NoteDependency>,
+                                NoteBuildable {
+  public override init(dependency: NoteDependency) {
     super.init(dependency: dependency)
   }
 
-  func build(withListener listener: NoteListener) -> ViewableRouting {
+  public func build(withListener listener: NoteListener) -> ViewableRouting {
     let _ = NoteComponent(dependency: dependency)
     let viewController = NoteViewController()
     let interactor = NoteInteractor(presenter: viewController)

@@ -34,4 +34,12 @@ extension MainViewController: MainViewControllable {
     let viewController = viewControllable.uiviewController
     slideMenuViewController = UINavigationController(rootViewController: viewController)
   }
+
+  func setRootViewController(_ viewControllable: ViewControllable) {
+    rootViewController = viewControllable.uiviewController
+  }
+
+  func popRootViewController() {
+    rootViewController = nil
+  }
 }

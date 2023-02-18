@@ -72,6 +72,8 @@ let package = Package(
         dependencies: [
           "Main",
           "ModernRIBs",
+          "Note",
+          "NoteImp",
           "SlideMenu",
           "SlideMenuImp",
           .product(name: "Entity", package: "Core"),

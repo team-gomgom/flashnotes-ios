@@ -7,31 +7,33 @@
 
 import Main
 import ModernRIBs
+import Note
+import NoteImp
 import SlideMenu
 import SlideMenuImp
 
 public protocol MainDependency: Dependency {}
 
-final class MainComponent: Component<MainDependency>, SlideMenuDependency {}
+final class MainComponent: Component<MainDependency>, SlideMenuDependency, NoteDependency {}
 
 // MARK: - Builder
 
-public final class MainBuilder: Builder<MainDependency>,
-                                MainBuildable {
-  public override init(dependency: MainDependency) {
-    super.init(dependency: dependency)
-  }
-  
+public final class MainBuilder: Builder<MainDependency> {}
+
+extension MainBuilder: MainBuildable {
   public func build(withListener listener: MainListener) -> ViewableRouting {
     let component = MainComponent(dependency: dependency)
     let viewController = MainViewController()
     let slideMenuBuildable = SlideMenuBuilder(dependency: component)
+    let noteBuildable = NoteBuilder(dependency: component)
     let interactor = MainInteractor(presenter: viewController)
     interactor.listener = listener
+
     return MainRouter(
       interactor: interactor,
       viewController: viewController,
-      slideMenuBuildable: slideMenuBuildable
+      slideMenuBuildable: slideMenuBuildable,
+      noteBuildable: noteBuildable
     )
   }
 }

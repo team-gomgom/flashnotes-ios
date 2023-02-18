@@ -10,6 +10,8 @@ import ModernRIBs
 
 protocol MainRouting: ViewableRouting {
   func attachSlideMenu()
+  func attachNote()
+  func detachNote()
 }
 
 protocol MainPresentable: Presentable {
@@ -32,5 +34,6 @@ final class MainInteractor: PresentableInteractor<MainPresentable>,
     super.didBecomeActive()
 
     router?.attachSlideMenu()
+    router?.attachNote()
   }
 }
