@@ -10,9 +10,8 @@ import ModernRIBs
 
 protocol LoggedInRouting: Routing {
   func cleanupViews()
+  func routeToMain()
 }
-
-
 
 final class LoggedInInteractor: Interactor, LoggedInInteractable {
   weak var router: LoggedInRouting?
@@ -22,6 +21,8 @@ final class LoggedInInteractor: Interactor, LoggedInInteractable {
 
   override func didBecomeActive() {
     super.didBecomeActive()
+
+    router?.routeToMain()
   }
 
   override func willResignActive() {

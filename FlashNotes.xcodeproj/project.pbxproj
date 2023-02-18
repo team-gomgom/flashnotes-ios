@@ -18,6 +18,8 @@
 		A72A124A299686B90015221A /* AppRootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A1246299686B90015221A /* AppRootBuilder.swift */; };
 		A72A124B299686B90015221A /* AppRootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A1247299686B90015221A /* AppRootInteractor.swift */; };
 		A72AF19E299B8CE500F18527 /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = A72AF19D299B8CE500F18527 /* Network */; };
+		A73BEABA299F397000D17763 /* Main in Frameworks */ = {isa = PBXBuildFile; productRef = A73BEAB9299F397000D17763 /* Main */; };
+		A73BEABC299F397300D17763 /* MainImp in Frameworks */ = {isa = PBXBuildFile; productRef = A73BEABB299F397300D17763 /* MainImp */; };
 		A73D9E7E299C906500371A50 /* FlashNotesUI in Frameworks */ = {isa = PBXBuildFile; productRef = A73D9E7D299C906500371A50 /* FlashNotesUI */; };
 		A7612B3D299E725000818885 /* Note in Frameworks */ = {isa = PBXBuildFile; productRef = A7612B3C299E725000818885 /* Note */; };
 		A7612B3F299E725300818885 /* NoteImp in Frameworks */ = {isa = PBXBuildFile; productRef = A7612B3E299E725300818885 /* NoteImp */; };
@@ -58,9 +60,11 @@
 				A7612B3F299E725300818885 /* NoteImp in Frameworks */,
 				A7BB29BA299CB94A002B74EC /* SlideMenuImp in Frameworks */,
 				A72A123F29965A630015221A /* ModernRIBs in Frameworks */,
+				A73BEABC299F397300D17763 /* MainImp in Frameworks */,
 				A7612B3D299E725000818885 /* Note in Frameworks */,
 				A7A8A4B1299B912200D9C087 /* NetworkImp in Frameworks */,
 				A77B314629A0E53000F31F30 /* LoggedIn in Frameworks */,
+				A73BEABA299F397000D17763 /* Main in Frameworks */,
 				A7A8A4B3299BEC4800D9C087 /* CombineUtil in Frameworks */,
 				A7BB29B8299CB947002B74EC /* SlideMenu in Frameworks */,
 				A73D9E7E299C906500371A50 /* FlashNotesUI in Frameworks */,
@@ -173,6 +177,8 @@
 				A7612B3E299E725300818885 /* NoteImp */,
 				A77B314529A0E53000F31F30 /* LoggedIn */,
 				A77B314729A0E53300F31F30 /* LoggedInImp */,
+				A73BEAB9299F397000D17763 /* Main */,
+				A73BEABB299F397300D17763 /* MainImp */,
 			);
 			productName = FlashNotes;
 			productReference = A72A122629964AC20015221A /* FlashNotes.app */;
@@ -475,6 +481,14 @@
 		A72AF19D299B8CE500F18527 /* Network */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Network;
+		};
+		A73BEAB9299F397000D17763 /* Main */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Main;
+		};
+		A73BEABB299F397300D17763 /* MainImp */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MainImp;
 		};
 		A73D9E7D299C906500371A50 /* FlashNotesUI */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -16,6 +16,14 @@ let package = Package(
         targets: ["LoggedInImp"]
       ),
       .library(
+        name: "Main",
+        targets: ["Main"]
+      ),
+      .library(
+        name: "MainImp",
+        targets: ["MainImp"]
+      ),
+      .library(
         name: "Note",
         targets: ["Note"]
       ),
@@ -49,7 +57,27 @@ let package = Package(
         name: "LoggedInImp",
         dependencies: [
           "LoggedIn",
-          "ModernRIBs"
+          "Main",
+          "MainImp",
+          "ModernRIBs",
+          .product(name: "RIBsUtil", package: "Core"),
+        ]
+      ),
+      .target(
+        name: "Main",
+        dependencies: ["ModernRIBs"]
+      ),
+      .target(
+        name: "MainImp",
+        dependencies: [
+          "Main",
+          "ModernRIBs",
+          "Note",
+          "NoteImp",
+          "SlideMenu",
+          "SlideMenuImp",
+          .product(name: "Entity", package: "Core"),
+          .product(name: "FlashNotesUI", package: "UI"),
         ]
       ),
       .target(

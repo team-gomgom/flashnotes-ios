@@ -6,13 +6,16 @@
 //
 
 import LoggedIn
+import Main
+import MainImp
 import ModernRIBs
 
 public protocol LoggedInDependency: Dependency {
   var loggedInViewController: ViewControllable { get }
 }
 
-final class LoggedInComponent: Component<LoggedInDependency> {
+final class LoggedInComponent: Component<LoggedInDependency>,
+                               MainDependency {
   fileprivate var loggedInViewController: ViewControllable {
     return dependency.loggedInViewController
   }
@@ -28,9 +31,11 @@ public final class LoggedInBuilder: Builder<LoggedInDependency>,
     let component = LoggedInComponent(dependency: dependency)
     let interactor = LoggedInInteractor()
     interactor.listener = listener
+    let mainBuildable = MainBuilder(dependency: component)
     return LoggedInRouter(
       interactor: interactor,
-      viewController: component.loggedInViewController
+      viewController: component.loggedInViewController,
+      mainBuildable: mainBuildable
     )
   }
 }

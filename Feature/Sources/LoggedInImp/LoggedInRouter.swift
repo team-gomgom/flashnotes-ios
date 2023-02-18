@@ -6,24 +6,45 @@
 //
 
 import LoggedIn
+import Main
+import MainImp
 import ModernRIBs
+import RIBsUtil
 
-protocol LoggedInInteractable: Interactable {
+protocol LoggedInInteractable: Interactable, MainListener {
   var router: LoggedInRouting? { get set }
   var listener: LoggedInListener? { get set }
 }
 
-final class LoggedInRouter: Router<LoggedInInteractable>,
-                            LoggedInRouting {
-  init(interactor: LoggedInInteractable, viewController: ViewControllable) {
+final class LoggedInRouter: Router<LoggedInInteractable> {
+  private let viewController: ViewControllable
+  private let mainBuildable: MainBuildable
+  private var mainRouting: ViewableRouting?
+
+  init(
+    interactor: LoggedInInteractable,
+    viewController: ViewControllable,
+    mainBuildable: MainBuildable
+  ) {
     self.viewController = viewController
+    self.mainBuildable = mainBuildable
     super.init(interactor: interactor)
+
     interactor.router = self
   }
 
   func cleanupViews() {}
+}
 
-  // MARK: - Private
+// MARK: - LoggedInRouting
 
-  private let viewController: ViewControllable
+extension LoggedInRouter: LoggedInRouting {
+  func routeToMain() {
+    guard mainRouting == nil else { return }
+
+    let routing = mainBuildable.build(withListener: interactor)
+    viewController.presentWithFullScreen(routing.viewControllable, animated: false)
+    mainRouting = routing
+    attachChild(routing)
+  }
 }

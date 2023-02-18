@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class SlideController: UIViewController {
+open class SlideController: UIViewController {
   // MARK: Public Properties
 
   private(set) var isExpanded: Bool = false
@@ -19,8 +19,17 @@ public class SlideController: UIViewController {
     }
   }
 
-  public var slideMenuViewController: UIViewController!
-  public var rootNavigationController: UINavigationController!
+  public var slideMenuViewController: UIViewController? {
+    didSet {
+      oldValue?.view.constraints.forEach { constraint in
+        oldValue?.view.removeConstraint(constraint)
+      }
+      dimmedView.removeFromSuperview()
+      oldValue?.view.removeFromSuperview()
+      setupSlideMenuLayout()
+    }
+  }
+
   public var rootViewController: UIViewController? {
     get {
       rootNavigationController.viewControllers.first
@@ -41,10 +50,15 @@ public class SlideController: UIViewController {
 
   // MARK: Private Properties
 
+  private var rootNavigationController: UINavigationController!
   private var isDraggingEnabled: Bool = false
   private var panBaseLocation: CGFloat = 0
-  private var slideMenuConstraintTrailing: NSLayoutConstraint!
   private let dimmedView = UIView()
+
+  public init(navigationController: UINavigationController) {
+    self.rootNavigationController = navigationController
+    super.init(nibName: nil, bundle: nil)
+  }
 
   public init(
     slideMenuViewController: UIViewController,
@@ -55,7 +69,7 @@ public class SlideController: UIViewController {
     super.init(nibName: nil, bundle: nil)
   }
 
-  required init?(coder: NSCoder) {
+  public required init?(coder: NSCoder) {
     super.init(coder: coder)
   }
 
@@ -63,7 +77,7 @@ public class SlideController: UIViewController {
     super.viewDidLoad()
 
     setup()
-    setupLayout()
+    setupNavigationLayout()
     setGestureRecognizer()
   }
 }
@@ -89,20 +103,16 @@ private extension SlideController {
     dimmedView.alpha = 1
   }
 
-  func setupLayout() {
+  func setupSlideMenuLayout() {
+    guard let slideMenuViewController = slideMenuViewController else { return }
+
     let slideMenuView = slideMenuViewController.view!
-    let navigationView = rootNavigationController.view!
     slideMenuView.translatesAutoresizingMaskIntoConstraints = false
-    navigationView.translatesAutoresizingMaskIntoConstraints = false
     dimmedView.translatesAutoresizingMaskIntoConstraints = false
 
     addChild(slideMenuViewController)
     view.insertSubview(slideMenuView, at: 0)
     slideMenuViewController.didMove(toParent: self)
-
-    addChild(rootNavigationController)
-    view.insertSubview(navigationView, at: 1)
-    rootNavigationController.didMove(toParent: self)
 
     slideMenuView.addSubview(dimmedView)
 
@@ -110,14 +120,26 @@ private extension SlideController {
       slideMenuView.topAnchor.constraint(equalTo: view.topAnchor),
       slideMenuView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
       slideMenuView.widthAnchor.constraint(equalToConstant: slideMenuMaximumWidth),
-      navigationView.topAnchor.constraint(equalTo: view.topAnchor),
-      navigationView.leftAnchor.constraint(equalTo: view.leftAnchor),
-      navigationView.rightAnchor.constraint(equalTo: view.rightAnchor),
-      navigationView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
       dimmedView.topAnchor.constraint(equalTo: slideMenuView.topAnchor),
       dimmedView.leftAnchor.constraint(equalTo: slideMenuView.leftAnchor),
       dimmedView.rightAnchor.constraint(equalTo: slideMenuView.rightAnchor),
       dimmedView.bottomAnchor.constraint(equalTo: slideMenuView.bottomAnchor)
+    ])
+  }
+
+  func setupNavigationLayout() {
+    let navigationView = rootNavigationController.view!
+    navigationView.translatesAutoresizingMaskIntoConstraints = false
+
+    addChild(rootNavigationController)
+    view.insertSubview(navigationView, at: 1)
+    rootNavigationController.didMove(toParent: self)
+
+    NSLayoutConstraint.activate([
+      navigationView.topAnchor.constraint(equalTo: view.topAnchor),
+      navigationView.leftAnchor.constraint(equalTo: view.leftAnchor),
+      navigationView.rightAnchor.constraint(equalTo: view.rightAnchor),
+      navigationView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
     ])
   }
 
@@ -236,6 +258,11 @@ extension SlideController: UIGestureRecognizerDelegate {
     _ gestureRecognizer: UIGestureRecognizer,
     shouldReceive touch: UITouch
   ) -> Bool {
-    return !(touch.view!.isDescendant(of: slideMenuViewController.view))
+    guard let slideMenuView = slideMenuViewController?.view else { return false }
+
+    if gestureRecognizer is UITapGestureRecognizer {
+      return !(touch.view!.isDescendant(of: slideMenuView))
+    }
+    return true
   }
 }
