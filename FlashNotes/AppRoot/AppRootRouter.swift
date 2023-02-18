@@ -5,22 +5,38 @@
 //  Created by 정동천 on 2023/02/10.
 //
 
+import LoggedIn
+import LoggedInImp
 import ModernRIBs
 
-protocol AppRootInteractable: Interactable {
+protocol AppRootInteractable: Interactable, LoggedInListener {
   var router: AppRootRouting? { get set }
 }
 
 protocol AppRootViewControllable: ViewControllable {}
 
-final class AppRootRouter: LaunchRouter<AppRootInteractable,
-                           AppRootViewControllable>,
-                           AppRootRouting {
-  override init(
+final class AppRootRouter: LaunchRouter<AppRootInteractable, AppRootViewControllable> {
+  private let loggedInBuildable: LoggedInBuildable
+  private var loggedInRouting: Routing?
+
+  init(
     interactor: AppRootInteractable,
-    viewController: AppRootViewControllable
+    viewController: AppRootViewControllable,
+    loggedInBuildable: LoggedInBuildable
   ) {
+    self.loggedInBuildable = loggedInBuildable
     super.init(interactor: interactor, viewController: viewController)
+
     interactor.router = self
+  }
+}
+
+// MARK: - AppRootRouting
+
+extension AppRootRouter: AppRootRouting {
+  func routeToLoggedIn() {
+    let loggedInRouting = loggedInBuildable.build(withListener: interactor)
+    self.loggedInRouting = loggedInRouting
+    attachChild(loggedInRouting)
   }
 }
