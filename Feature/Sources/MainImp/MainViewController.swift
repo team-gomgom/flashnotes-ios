@@ -32,7 +32,12 @@ final class MainViewController: SlideController,
 extension MainViewController: MainViewControllable {
   func setMenuViewController(_ viewControllable: ViewControllable) {
     let viewController = viewControllable.uiviewController
-    slideMenuViewController = UINavigationController(rootViewController: viewController)
+    let navigationController = UINavigationController(rootViewController: viewController)
+    let navigationBarAppearance = UINavigationBarAppearance()
+    navigationBarAppearance.configureWithTransparentBackground()
+    navigationController.navigationBar.standardAppearance = navigationBarAppearance
+    navigationController.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+    slideMenuViewController = navigationController
   }
 
   func setRootViewController(_ viewControllable: ViewControllable) {
