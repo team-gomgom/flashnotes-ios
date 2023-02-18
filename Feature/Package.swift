@@ -69,6 +69,8 @@ let package = Package(
         dependencies: [
           "Main",
           "ModernRIBs",
+          "SlideMenu",
+          "SlideMenuImp",
           .product(name: "Entity", package: "Core"),
           .product(name: "FlashNotesUI", package: "UI"),
         ]
