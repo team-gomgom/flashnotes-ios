@@ -73,7 +73,7 @@ open class SlideController: UIViewController {
     super.init(coder: coder)
   }
 
-  public override func viewDidLoad() {
+  open override func viewDidLoad() {
     super.viewDidLoad()
 
     setup()
