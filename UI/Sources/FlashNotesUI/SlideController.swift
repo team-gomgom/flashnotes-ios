@@ -259,6 +259,10 @@ extension SlideController: UIGestureRecognizerDelegate {
     shouldReceive touch: UITouch
   ) -> Bool {
     guard let slideMenuView = slideMenuViewController?.view else { return false }
-    return !(touch.view!.isDescendant(of: slideMenuView))
+
+    if gestureRecognizer is UITapGestureRecognizer {
+      return !(touch.view!.isDescendant(of: slideMenuView))
+    }
+    return true
   }
 }
