@@ -1,1 +1,4 @@
-
+// MARK: - Action
+"action.cancel" = "Cancel";
+"action.page_add" = "Add Page";
+"action.note_delete" = "Delete Note";
