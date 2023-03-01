@@ -17,13 +17,21 @@ final class MainViewController: SlideController,
 
   init() {
     let navigationController = UINavigationController()
-    super.init(
-      navigationController: navigationController
-    )
+    super.init(navigationController: navigationController)
   }
 
   required init?(coder: NSCoder) {
     super.init(coder: coder)
+  }
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    setup()
+  }
+
+  private func setup() {
+    slideBarButtonItem.image = Images.icMenu.image
   }
 }
 

@@ -30,4 +30,5 @@ final class NoteInteractor: PresentableInteractor<NotePresentable>,
 
 extension NoteInteractor: NotePresentableListener {
   func didTapTrainingButton() {}
+  func didTapMoreButton() {}
 }

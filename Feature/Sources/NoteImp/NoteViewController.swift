@@ -11,6 +11,7 @@ import UIKit
 
 protocol NotePresentableListener: AnyObject {
   func didTapTrainingButton()
+  func didTapMoreButton()
 }
 
 final class NoteViewController: UIViewController,
@@ -19,6 +20,13 @@ final class NoteViewController: UIViewController,
   weak var listener: NotePresentableListener?
 
   private let pageListView = PageListView()
+
+  private lazy var moreButton = UIBarButtonItem(
+    image: UIImage(systemName: "ellipsis"),
+    style: .plain,
+    target: self,
+    action: #selector(moreButtonDidTap)
+  )
 
   private lazy var trainingButton: FloatingButton = {
     let image = Images.icCards.image
@@ -39,6 +47,7 @@ final class NoteViewController: UIViewController,
 
   private func setup() {
     view.backgroundColor = .secondarySystemBackground
+    navigationItem.rightBarButtonItem = moreButton
   }
 
   private func setupLayout() {
@@ -60,6 +69,11 @@ final class NoteViewController: UIViewController,
       trainingButton.widthAnchor.constraint(equalToConstant: 50),
       trainingButton.heightAnchor.constraint(equalToConstant: 50)
     ])
+  }
+
+  @objc
+  private func moreButtonDidTap() {
+    listener?.didTapMoreButton()
   }
 
   @objc
