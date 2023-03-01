@@ -8,6 +8,22 @@
 import ModernRIBs
 import UIKit
 
+public enum ModalPresentationStyle {
+  case fullScreen
+  case overFullScreen
+
+  public var uiModalPresentationStyle: UIModalPresentationStyle {
+    switch self {
+    case .fullScreen:
+      return .fullScreen
+    case .overFullScreen:
+      return .overFullScreen
+    }
+  }
+}
+
+// MARK: - ViewControllable + Utils
+
 public extension ViewControllable {
   var topViewControllable: ViewControllable {
     var top: ViewControllable = self
@@ -19,12 +35,16 @@ public extension ViewControllable {
     return top
   }
 
-  func presentWithFullScreen(
+  func present(
     _ viewControllable: ViewControllable,
+    modalPresentationStyle: ModalPresentationStyle? = nil,
     animated: Bool,
     completion: (() -> Void)? = nil
   ) {
-    viewControllable.uiviewController.modalPresentationStyle = .fullScreen
+    if let modalPresentationStyle = modalPresentationStyle?.uiModalPresentationStyle {
+      viewControllable.uiviewController.modalPresentationStyle = modalPresentationStyle
+    }
+
     uiviewController.present(
       viewControllable.uiviewController,
       animated: animated,
@@ -54,6 +74,8 @@ public extension ViewControllable {
     navigationController?.setViewControllers(viewControllers, animated: animated)
   }
 }
+
+// MARK: - Private
 
 private extension ViewControllable {
   var navigationController: UINavigationController? {

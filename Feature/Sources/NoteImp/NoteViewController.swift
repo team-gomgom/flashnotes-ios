@@ -12,7 +12,8 @@ import UIKit
 
 protocol NotePresentableListener: AnyObject {
   func didTapTrainingButton()
-  func didTapMoreButton()
+  func didTapAddNote()
+  func didTapDeleteNote()
 }
 
 final class NoteViewController: UIViewController,
@@ -74,11 +75,49 @@ final class NoteViewController: UIViewController,
 
   @objc
   private func moreButtonDidTap() {
-    listener?.didTapMoreButton()
+    presentManagement()
   }
 
   @objc
   private func trainingButtonDidTap() {
     listener?.didTapTrainingButton()
+  }
+}
+
+// MARK: - NoteManagement
+
+private extension NoteViewController {
+  func presentManagement() {
+    let cancelAction = UIAlertAction(title: L10n.Action.cancel, style: .cancel)
+    
+    let addTitle = L10n.Action.addPage
+    let addImage = UIImage(systemName: "plus")
+    let addAction = alertAction(title: addTitle, image: addImage) { [weak self] in
+      self?.listener?.didTapAddNote()
+    }
+
+    let deleteTitle = L10n.Action.deleteNote
+    let deleteImage = UIImage(systemName: "trash")
+    let deleteAction = alertAction(title: deleteTitle, image: deleteImage) { [weak self] in
+      self?.listener?.didTapDeleteNote()
+    }
+
+    let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+    actionSheet.view.tintColor = Colors.textGray.color
+    actionSheet.addAction(addAction)
+    actionSheet.addAction(deleteAction)
+    actionSheet.addAction(cancelAction)
+    present(actionSheet, animated: true)
+  }
+
+  func alertAction(
+    title: String,
+    image: UIImage?,
+    handler: (() -> Void)? = nil
+  ) -> UIAlertAction {
+    let alertAction = UIAlertAction(title: title, style: .default) { _ in handler?() }
+    alertAction.setValue(image, forKey: "image")
+    alertAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+    return alertAction
   }
 }

@@ -1,1 +1,4 @@
-
+// MARK: - Action
+"action.cancel" = "취소";
+"action.page_add" = "페이지 추가";
+"action.note_delete" = "노트 삭제";
