@@ -7,6 +7,7 @@
 
 import FlashNotesUI
 import ModernRIBs
+import Resource
 import UIKit
 
 protocol NotePresentableListener: AnyObject {

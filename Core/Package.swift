@@ -24,6 +24,10 @@ let package = Package(
         targets: ["NetworkImp"]
       ),
       .library(
+        name: "Resource",
+        targets: ["Resource"]
+      ),
+      .library(
         name: "RIBsUtil",
         targets: ["RIBsUtil"]
       ),
@@ -52,6 +56,9 @@ let package = Package(
       .target(
         name: "NetworkImp",
         dependencies: ["Network"]
+      ),
+      .target(
+        name: "Resource"
       ),
       .target(
         name: "RIBsUtil",

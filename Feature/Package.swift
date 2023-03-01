@@ -77,6 +77,7 @@ let package = Package(
           "SlideMenu",
           "SlideMenuImp",
           .product(name: "Entity", package: "Core"),
+          .product(name: "Resource", package: "Core"),
           .product(name: "FlashNotesUI", package: "UI"),
         ]
       ),
@@ -90,6 +91,7 @@ let package = Package(
           "Note",
           "ModernRIBs",
           .product(name: "Entity", package: "Core"),
+          .product(name: "Resource", package: "Core"),
           .product(name: "FlashNotesUI", package: "UI"),
         ]
       ),
@@ -103,6 +105,7 @@ let package = Package(
           "SlideMenu",
           "ModernRIBs",
           .product(name: "Entity", package: "Core"),
+          .product(name: "Resource", package: "Core"),
           .product(name: "FlashNotesUI", package: "UI"),
         ]
       ),
