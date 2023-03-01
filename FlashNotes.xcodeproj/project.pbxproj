@@ -32,6 +32,7 @@
 		A7BB29B8299CB947002B74EC /* SlideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = A7BB29B7299CB947002B74EC /* SlideMenu */; };
 		A7BB29BA299CB94A002B74EC /* SlideMenuImp in Frameworks */ = {isa = PBXBuildFile; productRef = A7BB29B9299CB94A002B74EC /* SlideMenuImp */; };
 		A7CB5982299DFC2F000F939D /* Entity in Frameworks */ = {isa = PBXBuildFile; productRef = A7CB5981299DFC2F000F939D /* Entity */; };
+		A7CD928329AF4583009D2A29 /* Resource in Frameworks */ = {isa = PBXBuildFile; productRef = A7CD928229AF4583009D2A29 /* Resource */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7CD928329AF4583009D2A29 /* Resource in Frameworks */,
 				A7612B3F299E725300818885 /* NoteImp in Frameworks */,
 				A7BB29BA299CB94A002B74EC /* SlideMenuImp in Frameworks */,
 				A72A123F29965A630015221A /* ModernRIBs in Frameworks */,
@@ -179,6 +181,7 @@
 				A77B314729A0E53300F31F30 /* LoggedInImp */,
 				A73BEAB9299F397000D17763 /* Main */,
 				A73BEABB299F397300D17763 /* MainImp */,
+				A7CD928229AF4583009D2A29 /* Resource */,
 			);
 			productName = FlashNotes;
 			productReference = A72A122629964AC20015221A /* FlashNotes.app */;
@@ -533,6 +536,10 @@
 		A7CB5981299DFC2F000F939D /* Entity */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Entity;
+		};
+		A7CD928229AF4583009D2A29 /* Resource */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Resource;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

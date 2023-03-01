@@ -6,6 +6,7 @@
 //
 
 import FlashNotesUI
+import Resource
 import UIKit
 
 final class PageListCell: UITableViewCell {
