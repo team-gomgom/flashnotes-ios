@@ -43,7 +43,11 @@ extension LoggedInRouter: LoggedInRouting {
     guard mainRouting == nil else { return }
 
     let routing = mainBuildable.build(withListener: interactor)
-    viewController.presentWithFullScreen(routing.viewControllable, animated: false)
+    viewController.present(
+      routing.viewControllable,
+      modalPresentationStyle: .fullScreen,
+      animated: false
+    )
     mainRouting = routing
     attachChild(routing)
   }
