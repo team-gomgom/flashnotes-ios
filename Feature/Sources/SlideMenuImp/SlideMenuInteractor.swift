@@ -29,7 +29,7 @@ final class SlideMenuInteractor: PresentableInteractor<SlideMenuPresentable>,
 // MARK: - SlideMenuPresentableListener
 
 extension SlideMenuInteractor: SlideMenuPresentableListener {
-  func didTapAddPageButton() {
+  func didTapAddNoteButton() {
 
   }
 
