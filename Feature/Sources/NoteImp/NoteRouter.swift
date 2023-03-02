@@ -15,6 +15,9 @@ protocol NoteInteractable: Interactable, PageListener {
   var router: NoteRouting? { get set }
   var listener: NoteListener? { get set }
   var navigationDelegateProxy: NaviagationControllerDelegateProxy { get }
+
+  func navigationControllerDidPush()
+  func navigationControllerDidPop()
 }
 
 protocol NoteViewControllable: ViewControllable {}
@@ -45,6 +48,7 @@ extension NoteRouter: NoteRouting {
     viewController.uiviewController.navigationController?.delegate = interactor.navigationDelegateProxy
     interactor.navigationDelegateProxy.startObserving(parent: viewController.uiviewController)
     viewControllable.pushViewController(routing.viewControllable, animated: true)
+    interactor.navigationControllerDidPush()
 
     pageRouting = routing
     attachChild(routing)
@@ -53,6 +57,7 @@ extension NoteRouter: NoteRouting {
   func detachPage() {
     guard let routing = pageRouting else { return }
     routing.viewControllable.popViewController(animated: true)
+    interactor.navigationControllerDidPop()
 
     detachChild(routing)
     pageRouting = nil

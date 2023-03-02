@@ -16,11 +16,12 @@ protocol MainRouting: ViewableRouting {
 
 protocol MainPresentable: Presentable {
   var listener: MainPresentableListener? { get set }
+
+  func updateGestureEnabledState(_ state: Bool)
 }
 
 final class MainInteractor: PresentableInteractor<MainPresentable>,
-                            MainInteractable,
-                            MainPresentableListener {
+                            MainInteractable {
   weak var router: MainRouting?
   weak var listener: MainListener?
   
@@ -35,5 +36,17 @@ final class MainInteractor: PresentableInteractor<MainPresentable>,
 
     router?.attachSlideMenu()
     router?.attachNote()
+  }
+}
+
+// MARK: - MainPresentableListener
+
+extension MainInteractor: MainPresentableListener {
+  func navigationViewControllerDidPush() {
+    presenter.updateGestureEnabledState(false)
+  }
+
+  func navigationViewControllerDidPop() {
+    presenter.updateGestureEnabledState(true)
   }
 }
