@@ -1,4 +1,11 @@
 // MARK: - Action
+
+"action.done" = "Done";
 "action.cancel" = "Cancel";
 "action.page_add" = "Add Page";
 "action.note_delete" = "Delete Note";
+
+// MARK: - Alert
+
+"alert.note_creation.title" = "New Note";
+"alert.note_creation.message" = "Please enter the title.";
