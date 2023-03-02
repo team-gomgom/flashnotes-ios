@@ -17,8 +17,7 @@ protocol NotePresentableListener: AnyObject {
 }
 
 final class NoteViewController: UIViewController,
-                                NotePresentable,
-                                NoteViewControllable {
+                                NotePresentable {
   weak var listener: NotePresentableListener?
 
   private let pageListView = PageListView()
@@ -119,5 +118,15 @@ private extension NoteViewController {
     alertAction.setValue(image, forKey: "image")
     alertAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
     return alertAction
+  }
+}
+
+// MARK: - NoteViewControllable
+
+extension NoteViewController: NoteViewControllable {
+  func setupNavigationBar() {
+    let backBarButtonItem = UIBarButtonItem()
+    backBarButtonItem.tintColor = .secondarySystemBackground
+    navigationItem.backBarButtonItem = backBarButtonItem
   }
 }

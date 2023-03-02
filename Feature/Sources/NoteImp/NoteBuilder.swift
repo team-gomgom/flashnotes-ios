@@ -7,10 +7,12 @@
 
 import ModernRIBs
 import Note
+import Page
+import PageImp
 
 public protocol NoteDependency: Dependency {}
 
-final class NoteComponent: Component<NoteDependency> {}
+final class NoteComponent: Component<NoteDependency>, PageDependency {}
 
 // MARK: - Builder
 
@@ -21,10 +23,15 @@ public final class NoteBuilder: Builder<NoteDependency>,
   }
 
   public func build(withListener listener: NoteListener) -> ViewableRouting {
-    let _ = NoteComponent(dependency: dependency)
+    let component = NoteComponent(dependency: dependency)
     let viewController = NoteViewController()
     let interactor = NoteInteractor(presenter: viewController)
     interactor.listener = listener
-    return NoteRouter(interactor: interactor, viewController: viewController)
+    let pageBuilder = PageBuilder(dependency: component)
+    return NoteRouter(
+      interactor: interactor,
+      viewController: viewController,
+      pageBuildable: pageBuilder
+    )
   }
 }

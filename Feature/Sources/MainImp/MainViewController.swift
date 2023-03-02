@@ -12,8 +12,7 @@ import UIKit
 
 protocol MainPresentableListener: AnyObject {}
 
-final class MainViewController: SlideController,
-                                MainPresentable {
+final class MainViewController: SlideController {
   weak var listener: MainPresentableListener?
 
   init() {
@@ -55,5 +54,13 @@ extension MainViewController: MainViewControllable {
 
   func popRootViewController() {
     rootViewController = nil
+  }
+}
+
+// MARK: - MainPresentable
+
+extension MainViewController: MainPresentable {
+  func updateGestureEnabledState(_ state: Bool) {
+    isGestureEnabled = state
   }
 }

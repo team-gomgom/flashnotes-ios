@@ -7,22 +7,28 @@
 
 import ModernRIBs
 import Note
+import RIBsUtil
 
-protocol NoteRouting: ViewableRouting {}
+protocol NoteRouting: ViewableRouting {
+  func attachPage()
+  func detachPage()
+}
 
 protocol NotePresentable: Presentable {
   var listener: NotePresentableListener? { get set }
 }
 
-final class NoteInteractor: PresentableInteractor<NotePresentable>,
-                            NoteInteractable {
+final class NoteInteractor: PresentableInteractor<NotePresentable> {
   weak var router: NoteRouting?
   weak var listener: NoteListener?
+
+  let navigationDelegateProxy = NaviagationControllerDelegateProxy()
 
   override init(presenter: NotePresentable) {
     super.init(presenter: presenter)
 
     presenter.listener = self
+    navigationDelegateProxy.delegate = self
   }
 }
 
@@ -30,6 +36,30 @@ final class NoteInteractor: PresentableInteractor<NotePresentable>,
 
 extension NoteInteractor: NotePresentableListener {
   func didTapTrainingButton() {}
-  func didTapAddNote() {}
+
+  func didTapAddNote() {
+    router?.attachPage()
+  }
+
   func didTapDeleteNote() {}
+}
+
+// MARK: - AdaptivePresentationControllerDelegate
+
+extension NoteInteractor: NaviagationControllerDelegate {
+  func childViewControllerDidPop() {
+    router?.detachPage()
+  }
+}
+
+// MARK: - NoteInteractable
+
+extension NoteInteractor: NoteInteractable {
+  func navigationControllerDidPush() {
+    listener?.navigationViewControllerDidPush()
+  }
+
+  func navigationControllerDidPop() {
+    listener?.navigationViewControllerDidPop()
+  }
 }

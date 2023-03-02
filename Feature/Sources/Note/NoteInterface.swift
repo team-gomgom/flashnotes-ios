@@ -11,4 +11,7 @@ public protocol NoteBuildable: Buildable {
   func build(withListener listener: NoteListener) -> ViewableRouting
 }
 
-public protocol NoteListener: AnyObject {}
+public protocol NoteListener: AnyObject {
+  func navigationViewControllerDidPush()
+  func navigationViewControllerDidPop()
+}
