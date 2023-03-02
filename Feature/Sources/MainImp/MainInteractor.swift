@@ -7,6 +7,9 @@
 
 import Main
 import ModernRIBs
+import Note
+import SlideMenu
+import SlideMenuImp
 
 protocol MainRouting: ViewableRouting {
   func attachSlideMenu()
@@ -18,6 +21,7 @@ protocol MainPresentable: Presentable {
   var listener: MainPresentableListener? { get set }
 
   func updateGestureEnabledState(_ state: Bool)
+  func presentNoteCreation()
 }
 
 final class MainInteractor: PresentableInteractor<MainPresentable>,
@@ -42,11 +46,27 @@ final class MainInteractor: PresentableInteractor<MainPresentable>,
 // MARK: - MainPresentableListener
 
 extension MainInteractor: MainPresentableListener {
+  func createNote(title: String) {
+    
+  }
+}
+
+// MARK: - NoteListener
+
+extension MainInteractor: NoteListener {
   func navigationViewControllerDidPush() {
     presenter.updateGestureEnabledState(false)
   }
 
   func navigationViewControllerDidPop() {
     presenter.updateGestureEnabledState(true)
+  }
+}
+
+// MARK: - SlideMenuListener
+
+extension MainInteractor: SlideMenuListener {
+  func didTapAddNoteButton() {
+    presenter.presentNoteCreation()
   }
 }

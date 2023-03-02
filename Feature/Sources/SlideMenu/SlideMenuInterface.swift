@@ -11,4 +11,6 @@ public protocol SlideMenuBuildable: Buildable {
     func build(withListener listener: SlideMenuListener) -> ViewableRouting
 }
 
-public protocol SlideMenuListener: AnyObject {}
+public protocol SlideMenuListener: AnyObject {
+  func didTapAddNoteButton()
+}

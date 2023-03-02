@@ -10,7 +10,9 @@ import ModernRIBs
 import Resource
 import UIKit
 
-protocol MainPresentableListener: AnyObject {}
+protocol MainPresentableListener: AnyObject {
+  func createNote(title: String)
+}
 
 final class MainViewController: SlideController {
   weak var listener: MainPresentableListener?
@@ -62,5 +64,27 @@ extension MainViewController: MainViewControllable {
 extension MainViewController: MainPresentable {
   func updateGestureEnabledState(_ state: Bool) {
     isGestureEnabled = state
+  }
+
+  func presentNoteCreation() {
+    let title = L10n.Alert.NoteCreation.title
+    let message = L10n.Alert.NoteCreation.message
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+    let cancelTitle = L10n.Action.cancel
+    let cancelAction = UIAlertAction(title: cancelTitle, style: .destructive)
+
+    let doneTitle = L10n.Action.done
+    let doneAction = UIAlertAction(title: doneTitle, style: .default) { [listener] _ in
+      let title = alert.textFields?.first?.text ?? ""
+      listener?.createNote(title: title)
+    }
+
+    alert.addAction(cancelAction)
+    alert.addAction(doneAction)
+    alert.addTextField { textField in
+      textField.textAlignment = .center
+    }
+    present(alert, animated: true)
   }
 }
