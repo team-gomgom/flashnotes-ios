@@ -100,6 +100,7 @@ let package = Package(
           "ModernRIBs",
           .product(name: "Entity", package: "Core"),
           .product(name: "Resource", package: "Core"),
+          .product(name: "RIBsUtil", package: "Core"),
           .product(name: "FlashNotesUI", package: "UI"),
         ]
       ),
