@@ -32,6 +32,14 @@ let package = Package(
         targets: ["NoteImp"]
       ),
       .library(
+        name: "Page",
+        targets: ["Page"]
+      ),
+      .library(
+        name: "PageImp",
+        targets: ["PageImp"]
+      ),
+      .library(
         name: "SlideMenu",
         targets: ["SlideMenu"]
       ),
@@ -89,6 +97,20 @@ let package = Package(
         name: "NoteImp",
         dependencies: [
           "Note",
+          "ModernRIBs",
+          .product(name: "Entity", package: "Core"),
+          .product(name: "Resource", package: "Core"),
+          .product(name: "FlashNotesUI", package: "UI"),
+        ]
+      ),
+      .target(
+        name: "Page",
+        dependencies: ["ModernRIBs"]
+      ),
+      .target(
+        name: "PageImp",
+        dependencies: [
+          "Page",
           "ModernRIBs",
           .product(name: "Entity", package: "Core"),
           .product(name: "Resource", package: "Core"),

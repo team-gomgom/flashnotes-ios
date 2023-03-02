@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A712347629B0642F0050A51D /* Page in Frameworks */ = {isa = PBXBuildFile; productRef = A712347529B0642F0050A51D /* Page */; };
+		A712347829B064350050A51D /* PageImp in Frameworks */ = {isa = PBXBuildFile; productRef = A712347729B064350050A51D /* PageImp */; };
 		A72A122A29964AC20015221A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A122929964AC20015221A /* AppDelegate.swift */; };
 		A72A122C29964AC20015221A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A122B29964AC20015221A /* SceneDelegate.swift */; };
 		A72A123329964AC30015221A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A72A123229964AC30015221A /* Assets.xcassets */; };
@@ -58,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A712347629B0642F0050A51D /* Page in Frameworks */,
 				A7CD928329AF4583009D2A29 /* Resource in Frameworks */,
 				A7612B3F299E725300818885 /* NoteImp in Frameworks */,
 				A7BB29BA299CB94A002B74EC /* SlideMenuImp in Frameworks */,
@@ -69,6 +72,7 @@
 				A73BEABA299F397000D17763 /* Main in Frameworks */,
 				A7A8A4B3299BEC4800D9C087 /* CombineUtil in Frameworks */,
 				A7BB29B8299CB947002B74EC /* SlideMenu in Frameworks */,
+				A712347829B064350050A51D /* PageImp in Frameworks */,
 				A73D9E7E299C906500371A50 /* FlashNotesUI in Frameworks */,
 				A7A8A4B5299BEDEF00D9C087 /* RIBsUtil in Frameworks */,
 				A77B314829A0E53300F31F30 /* LoggedInImp in Frameworks */,
@@ -182,6 +186,8 @@
 				A73BEAB9299F397000D17763 /* Main */,
 				A73BEABB299F397300D17763 /* MainImp */,
 				A7CD928229AF4583009D2A29 /* Resource */,
+				A712347529B0642F0050A51D /* Page */,
+				A712347729B064350050A51D /* PageImp */,
 			);
 			productName = FlashNotes;
 			productReference = A72A122629964AC20015221A /* FlashNotes.app */;
@@ -479,6 +485,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A712347529B0642F0050A51D /* Page */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Page;
+		};
+		A712347729B064350050A51D /* PageImp */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PageImp;
+		};
 		A72A123E29965A630015221A /* ModernRIBs */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A72A123D29965A630015221A /* XCRemoteSwiftPackageReference "ModernRIBs" */;
