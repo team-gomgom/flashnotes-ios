@@ -97,6 +97,8 @@ let package = Package(
         name: "NoteImp",
         dependencies: [
           "Note",
+          "Page",
+          "PageImp",
           "ModernRIBs",
           .product(name: "Entity", package: "Core"),
           .product(name: "Resource", package: "Core"),
