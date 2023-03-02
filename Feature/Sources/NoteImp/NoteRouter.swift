@@ -20,7 +20,9 @@ protocol NoteInteractable: Interactable, PageListener {
   func navigationControllerDidPop()
 }
 
-protocol NoteViewControllable: ViewControllable {}
+protocol NoteViewControllable: ViewControllable {
+  func setupNavigationBar()
+}
 
 final class NoteRouter: ViewableRouter<NoteInteractable, NoteViewControllable> {
   private let pageBuildable: PageBuildable
@@ -47,6 +49,7 @@ extension NoteRouter: NoteRouting {
     let routing = pageBuildable.build(withListener: interactor)
     viewController.uiviewController.navigationController?.delegate = interactor.navigationDelegateProxy
     interactor.navigationDelegateProxy.startObserving(parent: viewController.uiviewController)
+    viewController.setupNavigationBar()
     viewControllable.pushViewController(routing.viewControllable, animated: true)
     interactor.navigationControllerDidPush()
 
