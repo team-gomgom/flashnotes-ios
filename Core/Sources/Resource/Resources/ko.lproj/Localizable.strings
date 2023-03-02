@@ -1,4 +1,11 @@
 // MARK: - Action
+
+"action.done" = "완료";
 "action.cancel" = "취소";
 "action.page_add" = "페이지 추가";
 "action.note_delete" = "노트 삭제";
+
+// MARK: - Alert
+
+"alert.note_creation.title" = "새로운 노트";
+"alert.note_creation.message" = "이름을 입력해주세요.";

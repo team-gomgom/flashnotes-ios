@@ -11,7 +11,7 @@ import Resource
 import UIKit
 
 protocol SlideMenuPresentableListener: AnyObject {
-  func didTapAddPageButton()
+  func didTapAddNoteButton()
   func didTapSettingButton()
   func didSelectItem(at index: Int)
 }
@@ -90,7 +90,7 @@ final class SlideMenuViewController: UIViewController,
 
   @objc
   private func plusButtonDidTap() {
-    listener?.didTapAddPageButton()
+    listener?.didTapAddNoteButton()
   }
 
   @objc
