@@ -8,6 +8,10 @@ let package = Package(
     platforms: [.iOS(.v14)],
     products: [
       .library(
+        name: "Entity",
+        targets: ["Entity"]
+      ),
+      .library(
         name: "LoggedIn",
         targets: ["LoggedIn"]
       ),
@@ -58,6 +62,9 @@ let package = Package(
     ],
     targets: [
       .target(
+        name: "Entity"
+      ),
+      .target(
         name: "LoggedIn",
         dependencies: ["ModernRIBs"]
       ),
@@ -78,13 +85,13 @@ let package = Package(
       .target(
         name: "MainImp",
         dependencies: [
+          "Entity",
           "Main",
           "ModernRIBs",
           "Note",
           "NoteImp",
           "SlideMenu",
           "SlideMenuImp",
-          .product(name: "Entity", package: "Core"),
           .product(name: "Resource", package: "Core"),
           .product(name: "FlashNotesUI", package: "UI"),
         ]
@@ -96,11 +103,11 @@ let package = Package(
       .target(
         name: "NoteImp",
         dependencies: [
+          "Entity",
           "Note",
           "Page",
           "PageImp",
           "ModernRIBs",
-          .product(name: "Entity", package: "Core"),
           .product(name: "Resource", package: "Core"),
           .product(name: "RIBsUtil", package: "Core"),
           .product(name: "FlashNotesUI", package: "UI"),
@@ -113,9 +120,9 @@ let package = Package(
       .target(
         name: "PageImp",
         dependencies: [
+          "Entity",
           "Page",
           "ModernRIBs",
-          .product(name: "Entity", package: "Core"),
           .product(name: "Resource", package: "Core"),
           .product(name: "FlashNotesUI", package: "UI"),
         ]
@@ -127,9 +134,9 @@ let package = Package(
       .target(
         name: "SlideMenuImp",
         dependencies: [
+          "Entity",
           "SlideMenu",
           "ModernRIBs",
-          .product(name: "Entity", package: "Core"),
           .product(name: "Resource", package: "Core"),
           .product(name: "FlashNotesUI", package: "UI"),
         ]

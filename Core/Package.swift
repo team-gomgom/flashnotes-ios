@@ -13,10 +13,6 @@ let package = Package(
         targets: ["CombineUtil"]
       ),
       .library(
-        name: "Entity",
-        targets: ["Entity"]
-      ),
-      .library(
         name: "Network",
         targets: ["Network"]
       ),
@@ -47,9 +43,6 @@ let package = Package(
       .target(
         name: "CombineUtil",
         dependencies: ["CombineExt"]
-      ),
-      .target(
-        name: "Entity"
       ),
       .target(
         name: "Network"
