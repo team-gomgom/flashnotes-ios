@@ -18,12 +18,15 @@ public final class NetworkImp: Network {
 
   public func request<R: Decodable, E: RequestResponsable>(
     with endpoint: E
-  ) -> AnyPublisher<R, Error> where E.Response == R {
+  ) -> AnyPublisher<Response<R>, Error> where E.Response == R {
     do {
       let urlRequest = try endpoint.urlRequest()
       return session.dataTaskPublisher(for: urlRequest)
-        .map(\.data)
-        .decode(type: R.self, decoder: JSONDecoder())
+        .tryMap { data, response in
+          let output = try JSONDecoder().decode(R.self, from: data)
+          let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
+          return Response(output: output, statusCode: statusCode)
+        }
         .eraseToAnyPublisher()
     } catch {
       return Fail(error: error).eraseToAnyPublisher()
