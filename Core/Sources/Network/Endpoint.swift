@@ -38,10 +38,10 @@ public class Endpoint<R>: RequestResponsable {
     baseURL: String,
     path: String,
     method: HTTPMethod,
-    queryParameters: Encodable?,
-    bodyParameters: Encodable?,
-    authorization: String?,
-    headers: [String: String]?
+    queryParameters: Encodable? = nil,
+    bodyParameters: Encodable? = nil,
+    authorization: String? = nil,
+    headers: [String: String]? = nil
   ) {
     self.baseURL = baseURL
     self.path = path
