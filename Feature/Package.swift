@@ -44,6 +44,10 @@ let package = Package(
         targets: ["PageImp"]
       ),
       .library(
+        name: "Repository",
+        targets: ["Repository"]
+      ),
+      .library(
         name: "SlideMenu",
         targets: ["SlideMenu"]
       ),
@@ -125,6 +129,12 @@ let package = Package(
           "ModernRIBs",
           .product(name: "Resource", package: "Core"),
           .product(name: "FlashNotesUI", package: "UI"),
+        ]
+      ),
+      .target(
+        name: "Repository",
+        dependencies: [
+          "Entity",
         ]
       ),
       .target(
