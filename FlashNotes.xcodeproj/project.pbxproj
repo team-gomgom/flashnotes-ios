@@ -35,6 +35,7 @@
 		A7BB29BA299CB94A002B74EC /* SlideMenuImp in Frameworks */ = {isa = PBXBuildFile; productRef = A7BB29B9299CB94A002B74EC /* SlideMenuImp */; };
 		A7CD928329AF4583009D2A29 /* Resource in Frameworks */ = {isa = PBXBuildFile; productRef = A7CD928229AF4583009D2A29 /* Resource */; };
 		A7E7617F29B1B12000AB96CB /* Entity in Frameworks */ = {isa = PBXBuildFile; productRef = A7E7617E29B1B12000AB96CB /* Entity */; };
+		A7E7618129B1B4A300AB96CB /* Repository in Frameworks */ = {isa = PBXBuildFile; productRef = A7E7618029B1B4A300AB96CB /* Repository */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 				A7A8A4B5299BEDEF00D9C087 /* RIBsUtil in Frameworks */,
 				A77B314829A0E53300F31F30 /* LoggedInImp in Frameworks */,
 				A72AF19E299B8CE500F18527 /* Network in Frameworks */,
+				A7E7618129B1B4A300AB96CB /* Repository in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +190,7 @@
 				A712347529B0642F0050A51D /* Page */,
 				A712347729B064350050A51D /* PageImp */,
 				A7E7617E29B1B12000AB96CB /* Entity */,
+				A7E7618029B1B4A300AB96CB /* Repository */,
 			);
 			productName = FlashNotes;
 			productReference = A72A122629964AC20015221A /* FlashNotes.app */;
@@ -557,6 +560,10 @@
 		A7E7617E29B1B12000AB96CB /* Entity */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Entity;
+		};
+		A7E7618029B1B4A300AB96CB /* Repository */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Repository;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
