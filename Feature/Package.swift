@@ -135,6 +135,7 @@ let package = Package(
         name: "Repository",
         dependencies: [
           "Entity",
+          .product(name: "Network", package: "Core"),
         ]
       ),
       .target(
