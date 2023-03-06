@@ -17,7 +17,6 @@ protocol SlideMenuPresentableListener: AnyObject {
 }
 
 final class SlideMenuViewController: UIViewController,
-                                     SlideMenuPresentable,
                                      SlideMenuViewControllable {
   weak var listener: SlideMenuPresentableListener?
 
@@ -104,5 +103,13 @@ final class SlideMenuViewController: UIViewController,
 extension SlideMenuViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     listener?.didSelectItem(at: indexPath.row)
+  }
+}
+
+// MARK: - SlideMenuPresentable
+
+extension SlideMenuViewController: SlideMenuPresentable {
+  func update(with viewModels: [NoteListCellViewModel]) {
+    noteListView.viewModels = viewModels
   }
 }

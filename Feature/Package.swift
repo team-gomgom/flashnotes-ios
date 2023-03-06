@@ -150,8 +150,9 @@ let package = Package(
         name: "SlideMenuImp",
         dependencies: [
           "Entity",
-          "SlideMenu",
           "ModernRIBs",
+          "Repository",
+          "SlideMenu",
           .product(name: "Resource", package: "Core"),
           .product(name: "FlashNotesUI", package: "UI"),
         ]
