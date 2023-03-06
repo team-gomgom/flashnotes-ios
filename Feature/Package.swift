@@ -96,6 +96,7 @@ let package = Package(
           "ModernRIBs",
           "Note",
           "NoteImp",
+          "Repository",
           "SlideMenu",
           "SlideMenuImp",
           .product(name: "Resource", package: "Core"),
