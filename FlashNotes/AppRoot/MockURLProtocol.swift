@@ -53,5 +53,9 @@ final class MockURLProtocol: URLProtocol {
     } else {
       client?.urlProtocol(self, didFailWithError: MockSessionError.notSupported)
     }
+
+    client?.urlProtocolDidFinishLoading(self)
   }
+
+  override func stopLoading() {}
 }

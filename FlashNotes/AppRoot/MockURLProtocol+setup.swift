@@ -75,7 +75,7 @@ private extension MockURLProtocol {
         ]
       ]
     ]
-    setupSuccessMock("/api/v1/note", "GET", response)
+    setupSuccessMock("/api/v1/page", "GET", response)
   }
 
   static func setupAddPage() {
@@ -86,7 +86,7 @@ private extension MockURLProtocol {
         ],
       ]
     ]
-    setupSuccessMock("/api/v1/note", "POST", response)
+    setupSuccessMock("/api/v1/page", "POST", response)
   }
 
   static func setupSuccessMock(_ path: String, _ method: String, _ response: [String: Any]) {
