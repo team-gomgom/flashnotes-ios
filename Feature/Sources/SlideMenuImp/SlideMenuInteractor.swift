@@ -5,13 +5,21 @@
 //  Created by 정동천 on 2023/02/15.
 //
 
+import Combine
 import ModernRIBs
+import Repository
 import SlideMenu
 
 protocol SlideMenuRouting: ViewableRouting {}
 
 protocol SlideMenuPresentable: Presentable {
   var listener: SlideMenuPresentableListener? { get set }
+
+  func update(with viewModels: [NoteListCellViewModel])
+}
+
+protocol SlideMenuInteractorDependency {
+  var noteRepository: NoteRepository { get }
 }
 
 final class SlideMenuInteractor: PresentableInteractor<SlideMenuPresentable>,
@@ -19,10 +27,27 @@ final class SlideMenuInteractor: PresentableInteractor<SlideMenuPresentable>,
   weak var router: SlideMenuRouting?
   weak var listener: SlideMenuListener?
 
-  override init(presenter: SlideMenuPresentable) {
+  private let dependency: SlideMenuInteractorDependency
+  private var cancellables = Set<AnyCancellable>()
+
+  init(
+    presenter: SlideMenuPresentable,
+    dependency: SlideMenuInteractorDependency
+  ) {
+    self.dependency = dependency
     super.init(presenter: presenter)
 
     presenter.listener = self
+    dependency.noteRepository.notes
+      .sink { [weak self] notes in
+        let viewModels = notes.map(NoteListCellViewModel.init)
+        self?.presenter.update(with: viewModels)
+      }.store(in: &cancellables)
+
+    dependency.noteRepository.getNotes()
+      .retry(2)
+      .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
+      .store(in: &cancellables)
   }
 }
 

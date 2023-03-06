@@ -9,12 +9,21 @@ import Main
 import ModernRIBs
 import Note
 import NoteImp
+import Repository
 import SlideMenu
 import SlideMenuImp
 
-public protocol MainDependency: Dependency {}
+public protocol MainDependency: Dependency {
+  var noteRepository: NoteRepository { get }
+}
 
-final class MainComponent: Component<MainDependency>, SlideMenuDependency, NoteDependency {}
+final class MainComponent: Component<MainDependency>,
+                           SlideMenuDependency,
+                           NoteDependency {
+  var noteRepository: NoteRepository {
+    dependency.noteRepository
+  }
+}
 
 // MARK: - Builder
 

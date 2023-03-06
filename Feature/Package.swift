@@ -79,6 +79,8 @@ let package = Package(
           "Main",
           "MainImp",
           "ModernRIBs",
+          "Repository",
+          .product(name: "Network", package: "Core"),
           .product(name: "RIBsUtil", package: "Core"),
         ]
       ),
@@ -94,6 +96,7 @@ let package = Package(
           "ModernRIBs",
           "Note",
           "NoteImp",
+          "Repository",
           "SlideMenu",
           "SlideMenuImp",
           .product(name: "Resource", package: "Core"),
@@ -147,8 +150,9 @@ let package = Package(
         name: "SlideMenuImp",
         dependencies: [
           "Entity",
-          "SlideMenu",
           "ModernRIBs",
+          "Repository",
+          "SlideMenu",
           .product(name: "Resource", package: "Core"),
           .product(name: "FlashNotesUI", package: "UI"),
         ]
