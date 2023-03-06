@@ -10,13 +10,16 @@ public struct Page: Equatable, Identifiable {
 
   public let id: Identifer
   public let question: String
+  public let answer: String?
 
   public init(
     id: String,
-    question: String
+    question: String,
+    answer: String?
   ) {
     self.id = id
     self.question = question
+    self.answer = answer
   }
 
   public static func == (lhs: Page, rhs: Page) -> Bool {
