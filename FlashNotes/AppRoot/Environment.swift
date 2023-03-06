@@ -15,7 +15,7 @@ enum Environment {
 
 extension Environment {
   private enum PlistKeys: String {
-    case serverBaseURL = "SERVER_BASE_URL"
+    case serverBaseURL = "ServerBaseURL"
   }
 
   private static func plist<T>(_ key: PlistKeys) -> T {
