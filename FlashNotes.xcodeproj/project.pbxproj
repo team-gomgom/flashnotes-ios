@@ -23,6 +23,8 @@
 		A73BEABA299F397000D17763 /* Main in Frameworks */ = {isa = PBXBuildFile; productRef = A73BEAB9299F397000D17763 /* Main */; };
 		A73BEABC299F397300D17763 /* MainImp in Frameworks */ = {isa = PBXBuildFile; productRef = A73BEABB299F397300D17763 /* MainImp */; };
 		A73D9E7E299C906500371A50 /* FlashNotesUI in Frameworks */ = {isa = PBXBuildFile; productRef = A73D9E7D299C906500371A50 /* FlashNotesUI */; };
+		A73DF21C29B5ED5800667EEA /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73DF21B29B5ED5800667EEA /* MockURLProtocol.swift */; };
+		A73DF21E29B5FCD700667EEA /* MockURLProtocol+setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73DF21D29B5FCD700667EEA /* MockURLProtocol+setup.swift */; };
 		A740A21A29B5E41600B85E55 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A740A21929B5E41600B85E55 /* Environment.swift */; };
 		A7612B3D299E725000818885 /* Note in Frameworks */ = {isa = PBXBuildFile; productRef = A7612B3C299E725000818885 /* Note */; };
 		A7612B3F299E725300818885 /* NoteImp in Frameworks */ = {isa = PBXBuildFile; productRef = A7612B3E299E725300818885 /* NoteImp */; };
@@ -51,6 +53,8 @@
 		A72A1245299686B90015221A /* AppRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootViewController.swift; sourceTree = "<group>"; };
 		A72A1246299686B90015221A /* AppRootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootBuilder.swift; sourceTree = "<group>"; };
 		A72A1247299686B90015221A /* AppRootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootInteractor.swift; sourceTree = "<group>"; };
+		A73DF21B29B5ED5800667EEA /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
+		A73DF21D29B5FCD700667EEA /* MockURLProtocol+setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MockURLProtocol+setup.swift"; sourceTree = "<group>"; };
 		A740A21329B5D59100B85E55 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		A740A21429B5D59100B85E55 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		A740A21929B5E41600B85E55 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -139,6 +143,8 @@
 				A72A1244299686B90015221A /* AppRootRouter.swift */,
 				A72A1245299686B90015221A /* AppRootViewController.swift */,
 				A740A21929B5E41600B85E55 /* Environment.swift */,
+				A73DF21B29B5ED5800667EEA /* MockURLProtocol.swift */,
+				A73DF21D29B5FCD700667EEA /* MockURLProtocol+setup.swift */,
 			);
 			path = AppRoot;
 			sourceTree = "<group>";
@@ -261,7 +267,9 @@
 				A72A1249299686B90015221A /* AppRootViewController.swift in Sources */,
 				A740A21A29B5E41600B85E55 /* Environment.swift in Sources */,
 				A72A1248299686B90015221A /* AppRootRouter.swift in Sources */,
+				A73DF21C29B5ED5800667EEA /* MockURLProtocol.swift in Sources */,
 				A72A122A29964AC20015221A /* AppDelegate.swift in Sources */,
+				A73DF21E29B5FCD700667EEA /* MockURLProtocol+setup.swift in Sources */,
 				A72A124B299686B90015221A /* AppRootInteractor.swift in Sources */,
 				A72A122C29964AC20015221A /* SceneDelegate.swift in Sources */,
 				A72A12422996865F0015221A /* AppComponent.swift in Sources */,
