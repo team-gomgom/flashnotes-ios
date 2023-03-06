@@ -5,12 +5,11 @@
 //  Created by 정동천 on 2023/02/15.
 //
 
-import Entity
 import FlashNotesUI
 import UIKit
 
 final class NoteListView: UITableView {
-  var notes: [Note] = [] {
+  var viewModels: [NoteListCellViewModel] = [] {
     didSet { reloadData() }
   }
 
@@ -36,13 +35,12 @@ final class NoteListView: UITableView {
 
 extension NoteListView: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return notes.count
+    return viewModels.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(NoteListCell.self, for: indexPath)
-    let viewModel = NoteListCellViewModel(note: notes[indexPath.row])
-    cell.configure(viewModel: viewModel)
+    cell.configure(viewModel: viewModels[indexPath.row])
     return cell
   }
 }
