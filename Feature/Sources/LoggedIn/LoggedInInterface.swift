@@ -8,7 +8,7 @@
 import ModernRIBs
 
 public protocol LoggedInBuildable: Buildable {
-  func build(withListener listener: LoggedInListener) -> Routing
+  func build(withListener listener: LoggedInListener, token: String) -> Routing
 }
 
 public protocol LoggedInListener: AnyObject {}

@@ -79,6 +79,8 @@ let package = Package(
           "Main",
           "MainImp",
           "ModernRIBs",
+          "Repository",
+          .product(name: "Network", package: "Core"),
           .product(name: "RIBsUtil", package: "Core"),
         ]
       ),

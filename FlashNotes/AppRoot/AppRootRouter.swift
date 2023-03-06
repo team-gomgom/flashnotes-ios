@@ -34,8 +34,8 @@ final class AppRootRouter: LaunchRouter<AppRootInteractable, AppRootViewControll
 // MARK: - AppRootRouting
 
 extension AppRootRouter: AppRootRouting {
-  func routeToLoggedIn() {
-    let loggedInRouting = loggedInBuildable.build(withListener: interactor)
+  func routeToLoggedIn(token: String) {
+    let loggedInRouting = loggedInBuildable.build(withListener: interactor, token: token)
     self.loggedInRouting = loggedInRouting
     attachChild(loggedInRouting)
   }

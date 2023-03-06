@@ -8,7 +8,7 @@
 import ModernRIBs
 
 protocol AppRootRouting: ViewableRouting {
-  func routeToLoggedIn()
+  func routeToLoggedIn(token: String)
 }
 
 protocol AppRootPresentable: Presentable {
@@ -29,7 +29,8 @@ final class AppRootInteractor: PresentableInteractor<AppRootPresentable>,
     super.didBecomeActive()
 
     // check loggedIn or loggedOut
-    router?.routeToLoggedIn()
+    let token = ""
+    router?.routeToLoggedIn(token: token)
   }
   
   override func willResignActive() {
