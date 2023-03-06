@@ -23,6 +23,7 @@
 		A73BEABA299F397000D17763 /* Main in Frameworks */ = {isa = PBXBuildFile; productRef = A73BEAB9299F397000D17763 /* Main */; };
 		A73BEABC299F397300D17763 /* MainImp in Frameworks */ = {isa = PBXBuildFile; productRef = A73BEABB299F397300D17763 /* MainImp */; };
 		A73D9E7E299C906500371A50 /* FlashNotesUI in Frameworks */ = {isa = PBXBuildFile; productRef = A73D9E7D299C906500371A50 /* FlashNotesUI */; };
+		A740A21A29B5E41600B85E55 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A740A21929B5E41600B85E55 /* Environment.swift */; };
 		A7612B3D299E725000818885 /* Note in Frameworks */ = {isa = PBXBuildFile; productRef = A7612B3C299E725000818885 /* Note */; };
 		A7612B3F299E725300818885 /* NoteImp in Frameworks */ = {isa = PBXBuildFile; productRef = A7612B3E299E725300818885 /* NoteImp */; };
 		A77B314629A0E53000F31F30 /* LoggedIn in Frameworks */ = {isa = PBXBuildFile; productRef = A77B314529A0E53000F31F30 /* LoggedIn */; };
@@ -52,6 +53,7 @@
 		A72A1247299686B90015221A /* AppRootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootInteractor.swift; sourceTree = "<group>"; };
 		A740A21329B5D59100B85E55 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		A740A21429B5D59100B85E55 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		A740A21929B5E41600B85E55 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		A7812C78299C8D63005EA4CD /* UI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = UI; sourceTree = "<group>"; };
 		A78C5595299B8875004D6A82 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
 		A78CA28D299B825F006A89F6 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				A72A1247299686B90015221A /* AppRootInteractor.swift */,
 				A72A1244299686B90015221A /* AppRootRouter.swift */,
 				A72A1245299686B90015221A /* AppRootViewController.swift */,
+				A740A21929B5E41600B85E55 /* Environment.swift */,
 			);
 			path = AppRoot;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A72A1249299686B90015221A /* AppRootViewController.swift in Sources */,
+				A740A21A29B5E41600B85E55 /* Environment.swift in Sources */,
 				A72A1248299686B90015221A /* AppRootRouter.swift in Sources */,
 				A72A122A29964AC20015221A /* AppDelegate.swift in Sources */,
 				A72A124B299686B90015221A /* AppRootInteractor.swift in Sources */,
