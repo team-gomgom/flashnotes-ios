@@ -5,6 +5,7 @@
 //  Created by 정동천 on 2023/02/10.
 //
 
+import CombineSchedulers
 import Foundation
 import LoggedIn
 import LoggedInImp
@@ -16,6 +17,7 @@ protocol AppRootDependency: Dependency {}
 
 final class AppRootComponent: Component<AppRootDependency>,
                               LoggedInDependency {
+  var mainQueue: AnySchedulerOf<DispatchQueue> { .main }
   var baseURL: String
   var network: Network
   var loggedInViewController: ViewControllable { rootViewController }

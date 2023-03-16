@@ -5,6 +5,8 @@
 //  Created by 정동천 on 2023/02/18.
 //
 
+import CombineSchedulers
+import Foundation
 import LoggedIn
 import Main
 import MainImp
@@ -13,6 +15,7 @@ import Network
 import Repository
 
 public protocol LoggedInDependency: Dependency {
+  var mainQueue: AnySchedulerOf<DispatchQueue> { get }
   var baseURL: String { get }
   var network: Network { get }
   var loggedInViewController: ViewControllable { get }
@@ -23,6 +26,8 @@ final class LoggedInComponent: Component<LoggedInDependency>,
   fileprivate var loggedInViewController: ViewControllable {
     return dependency.loggedInViewController
   }
+
+  var mainQueue: AnySchedulerOf<DispatchQueue> { dependency.mainQueue }
   var noteRepository: NoteRepository
 
   init(
