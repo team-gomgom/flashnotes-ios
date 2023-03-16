@@ -5,16 +5,22 @@
 //  Created by 정동천 on 2023/02/15.
 //
 
+import CombineSchedulers
+import Foundation
 import ModernRIBs
 import Repository
 import SlideMenu
 
 public protocol SlideMenuDependency: Dependency {
+  var mainQueue: AnySchedulerOf<DispatchQueue> { get }
   var noteRepository: NoteRepository { get }
 }
 
 final class SlideMenuComponent: Component<SlideMenuDependency>,
                                 SlideMenuInteractorDependency {
+  var mainQueue: AnySchedulerOf<DispatchQueue> {
+    dependency.mainQueue
+  }
   var noteRepository: NoteRepository {
     dependency.noteRepository
   }

@@ -6,6 +6,8 @@
 //
 
 import Combine
+import CombineSchedulers
+import Foundation
 import ModernRIBs
 import Repository
 import SlideMenu
@@ -19,6 +21,7 @@ protocol SlideMenuPresentable: Presentable {
 }
 
 protocol SlideMenuInteractorDependency {
+  var mainQueue: AnySchedulerOf<DispatchQueue> { get }
   var noteRepository: NoteRepository { get }
 }
 
@@ -39,6 +42,7 @@ final class SlideMenuInteractor: PresentableInteractor<SlideMenuPresentable>,
 
     presenter.listener = self
     dependency.noteRepository.notes
+      .receive(on: dependency.mainQueue)
       .sink { [weak self] notes in
         let viewModels = notes.map(NoteListCellViewModel.init)
         self?.presenter.update(with: viewModels)

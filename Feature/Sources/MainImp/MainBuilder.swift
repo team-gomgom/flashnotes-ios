@@ -5,6 +5,8 @@
 //  Created by 정동천 on 2023/02/17.
 //
 
+import CombineSchedulers
+import Foundation
 import Main
 import ModernRIBs
 import Note
@@ -14,15 +16,16 @@ import SlideMenu
 import SlideMenuImp
 
 public protocol MainDependency: Dependency {
+  var mainQueue: AnySchedulerOf<DispatchQueue> { get }
   var noteRepository: NoteRepository { get }
 }
 
 final class MainComponent: Component<MainDependency>,
                            SlideMenuDependency,
-                           NoteDependency {
-  var noteRepository: NoteRepository {
-    dependency.noteRepository
-  }
+                           NoteDependency,
+                           MainInteractorDependency {
+  var mainQueue: AnySchedulerOf<DispatchQueue> { dependency.mainQueue }
+  var noteRepository: NoteRepository { dependency.noteRepository }
 }
 
 // MARK: - Builder
@@ -35,7 +38,7 @@ extension MainBuilder: MainBuildable {
     let viewController = MainViewController()
     let slideMenuBuildable = SlideMenuBuilder(dependency: component)
     let noteBuildable = NoteBuilder(dependency: component)
-    let interactor = MainInteractor(presenter: viewController)
+    let interactor = MainInteractor(presenter: viewController, dependency: component)
     interactor.listener = listener
 
     return MainRouter(
