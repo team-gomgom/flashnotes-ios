@@ -5,8 +5,12 @@
 //  Created by 정동천 on 2023/02/16.
 //
 
+import Combine
+import CombineSchedulers
+import Foundation
 import ModernRIBs
 import Note
+import Repository
 import RIBsUtil
 
 protocol NoteRouting: ViewableRouting {
@@ -16,6 +20,13 @@ protocol NoteRouting: ViewableRouting {
 
 protocol NotePresentable: Presentable {
   var listener: NotePresentableListener? { get set }
+
+  func update(with viewModels: [PageListCellViewModel])
+}
+
+protocol NoteInteractorDependency {
+  var mainQueue: AnySchedulerOf<DispatchQueue> { get }
+  var pageRepository: PageRepository { get }
 }
 
 final class NoteInteractor: PresentableInteractor<NotePresentable> {
@@ -24,11 +35,21 @@ final class NoteInteractor: PresentableInteractor<NotePresentable> {
 
   let navigationDelegateProxy = NaviagationControllerDelegateProxy()
 
-  override init(presenter: NotePresentable) {
+  private let dependency: NoteInteractorDependency
+  private var cancellables = Set<AnyCancellable>()
+
+  init(
+    presenter: NotePresentable,
+    dependency: NoteInteractorDependency
+  ) {
+    self.dependency = dependency
     super.init(presenter: presenter)
 
     presenter.listener = self
     navigationDelegateProxy.delegate = self
+
+    bind()
+    getPages(noteID: "")
   }
 }
 
@@ -61,5 +82,30 @@ extension NoteInteractor: NoteInteractable {
 
   func navigationControllerDidPop() {
     listener?.navigationViewControllerDidPop()
+  }
+}
+
+// MARK: - Private
+
+private extension NoteInteractor {
+
+  func bind() {
+    dependency.pageRepository.pages
+      .receive(on: dependency.mainQueue)
+      .sink { [weak self] pages in
+        let viewModels = pages.map(PageListCellViewModel.init)
+        self?.presenter.update(with: viewModels)
+      }.store(in: &cancellables)
+  }
+
+  func getPages(noteID: String) {
+    dependency.pageRepository.getPages(noteID: noteID)
+      .receive(on: dependency.mainQueue)
+      .sink(
+        receiveCompletion: { completion in
+          // error handling
+        },
+        receiveValue: { _ in }
+      ).store(in: &cancellables)
   }
 }

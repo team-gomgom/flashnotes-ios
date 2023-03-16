@@ -16,8 +16,8 @@ protocol NotePresentableListener: AnyObject {
   func didTapDeleteNote()
 }
 
-final class NoteViewController: UIViewController,
-                                NotePresentable {
+final class NoteViewController: UIViewController {
+
   weak var listener: NotePresentableListener?
 
   private let pageListView = PageListView()
@@ -83,9 +83,30 @@ final class NoteViewController: UIViewController,
   }
 }
 
+// MARK: - NoteViewControllable
+
+extension NoteViewController: NoteViewControllable {
+
+  func setupNavigationBar() {
+    let backBarButtonItem = UIBarButtonItem()
+    backBarButtonItem.tintColor = .secondarySystemBackground
+    navigationItem.backBarButtonItem = backBarButtonItem
+  }
+}
+
+// MARK: - NotePresentable
+
+extension NoteViewController: NotePresentable {
+
+  func update(with viewModels: [PageListCellViewModel]) {
+    pageListView.viewModels = viewModels
+  }
+}
+
 // MARK: - NoteManagement
 
 private extension NoteViewController {
+
   func presentManagement() {
     let cancelAction = UIAlertAction(title: L10n.Action.cancel, style: .cancel)
     
@@ -118,15 +139,5 @@ private extension NoteViewController {
     alertAction.setValue(image, forKey: "image")
     alertAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
     return alertAction
-  }
-}
-
-// MARK: - NoteViewControllable
-
-extension NoteViewController: NoteViewControllable {
-  func setupNavigationBar() {
-    let backBarButtonItem = UIBarButtonItem()
-    backBarButtonItem.tintColor = .secondarySystemBackground
-    navigationItem.backBarButtonItem = backBarButtonItem
   }
 }

@@ -5,14 +5,26 @@
 //  Created by 정동천 on 2023/02/16.
 //
 
+import CombineSchedulers
+import Foundation
 import ModernRIBs
 import Note
 import Page
 import PageImp
+import Repository
 
-public protocol NoteDependency: Dependency {}
+public protocol NoteDependency: Dependency {
+  var mainQueue: AnySchedulerOf<DispatchQueue> { get }
+  var pageRepository: PageRepository { get }
+}
 
-final class NoteComponent: Component<NoteDependency>, PageDependency {}
+final class NoteComponent: Component<NoteDependency>,
+                           PageDependency,
+                           NoteInteractorDependency {
+
+  var mainQueue: AnySchedulerOf<DispatchQueue> { dependency.mainQueue }
+  var pageRepository: PageRepository { dependency.pageRepository }
+}
 
 // MARK: - Builder
 
@@ -25,7 +37,7 @@ public final class NoteBuilder: Builder<NoteDependency>,
   public func build(withListener listener: NoteListener) -> ViewableRouting {
     let component = NoteComponent(dependency: dependency)
     let viewController = NoteViewController()
-    let interactor = NoteInteractor(presenter: viewController)
+    let interactor = NoteInteractor(presenter: viewController, dependency: component)
     interactor.listener = listener
     let pageBuilder = PageBuilder(dependency: component)
     return NoteRouter(
