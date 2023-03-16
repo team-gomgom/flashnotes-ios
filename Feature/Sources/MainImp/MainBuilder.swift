@@ -22,7 +22,8 @@ public protocol MainDependency: Dependency {
 
 final class MainComponent: Component<MainDependency>,
                            SlideMenuDependency,
-                           NoteDependency{
+                           NoteDependency,
+                           MainInteractorDependency {
   var mainQueue: AnySchedulerOf<DispatchQueue> { dependency.mainQueue }
   var noteRepository: NoteRepository { dependency.noteRepository }
 }
@@ -37,7 +38,7 @@ extension MainBuilder: MainBuildable {
     let viewController = MainViewController()
     let slideMenuBuildable = SlideMenuBuilder(dependency: component)
     let noteBuildable = NoteBuilder(dependency: component)
-    let interactor = MainInteractor(presenter: viewController)
+    let interactor = MainInteractor(presenter: viewController, dependency: component)
     interactor.listener = listener
 
     return MainRouter(
