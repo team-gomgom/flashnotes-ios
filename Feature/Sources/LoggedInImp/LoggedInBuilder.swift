@@ -29,12 +29,18 @@ final class LoggedInComponent: Component<LoggedInDependency>,
 
   var mainQueue: AnySchedulerOf<DispatchQueue> { dependency.mainQueue }
   var noteRepository: NoteRepository
+  var pageRepository: PageRepository
 
   init(
     dependency: LoggedInDependency,
     token: String
   ) {
     self.noteRepository = NoteRepositoryImp(
+      network: dependency.network,
+      baseURL: dependency.baseURL,
+      authorization: token
+    )
+    self.pageRepository = PageRepositoryImp(
       network: dependency.network,
       baseURL: dependency.baseURL,
       authorization: token

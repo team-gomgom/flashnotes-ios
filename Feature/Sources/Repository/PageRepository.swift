@@ -13,30 +13,27 @@ import Network
 
 public protocol PageRepository: AnyObject {
   var authorization: String { get set }
-  var noteID: String { get set }
   var pages: ReadOnlyCurrentValuePublisher<[Page]> { get }
 
-  func getPages() -> AnyPublisher<[Page], Error>
-  func addPage(question: String, answer: String?) -> AnyPublisher<Page, Error>
+  func getPages(noteID: String) -> AnyPublisher<[Page], Error>
+  func addPage(noteID: String, question: String, answer: String?) -> AnyPublisher<Page, Error>
 }
 
 public final class PageRepositoryImp: PageRepository {
   public var authorization: String
-  public var noteID: String
   public var pages: ReadOnlyCurrentValuePublisher<[Page]> { _pages }
 
   private let _pages = CurrentValuePublisher<[Page]>([])
   private let network: Network
   private let baseURL: String
 
-  public init(network: Network, baseURL: String, authorization: String, noteID: String) {
+  public init(network: Network, baseURL: String, authorization: String) {
     self.network = network
     self.baseURL = baseURL
     self.authorization = authorization
-    self.noteID = noteID
   }
 
-  public func getPages() -> AnyPublisher<[Page], Error> {
+  public func getPages(noteID: String) -> AnyPublisher<[Page], Error> {
     let requestDTO = PageRequestDTO(noteId: noteID)
     let endpoint = Endpoint<ResponseDTO<PageResponseDTO>>(
       baseURL: baseURL,
@@ -59,7 +56,7 @@ public final class PageRepositoryImp: PageRepository {
       .eraseToAnyPublisher()
   }
 
-  public func addPage(question: String, answer: String?) -> AnyPublisher<Page, Error> {
+  public func addPage(noteID: String, question: String, answer: String?) -> AnyPublisher<Page, Error> {
     let requestDTO = AddPageRequestDTO(noteId: noteID, question: question, answer: answer)
     let endpoint = Endpoint<ResponseDTO<AddPageResponseDTO>>(
       baseURL: baseURL,
