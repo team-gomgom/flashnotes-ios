@@ -7,6 +7,8 @@
 
 import Combine
 import CombineSchedulers
+import CombineUtil
+import Entity
 import Foundation
 import ModernRIBs
 import Note
@@ -22,14 +24,17 @@ protocol NotePresentable: Presentable {
   var listener: NotePresentableListener? { get set }
 
   func update(with viewModels: [PageListCellViewModel])
+  func updateTitle(_ title: String?)
 }
 
 protocol NoteInteractorDependency {
+  var note: ReadOnlyCurrentValuePublisher<Note?> { get }
   var mainQueue: AnySchedulerOf<DispatchQueue> { get }
   var pageRepository: PageRepository { get }
 }
 
 final class NoteInteractor: PresentableInteractor<NotePresentable> {
+  
   weak var router: NoteRouting?
   weak var listener: NoteListener?
 
@@ -56,6 +61,7 @@ final class NoteInteractor: PresentableInteractor<NotePresentable> {
 // MARK: - NotePresentableListener
 
 extension NoteInteractor: NotePresentableListener {
+
   func didTapTrainingButton() {}
 
   func didTapAddNote() {
@@ -68,6 +74,7 @@ extension NoteInteractor: NotePresentableListener {
 // MARK: - AdaptivePresentationControllerDelegate
 
 extension NoteInteractor: NaviagationControllerDelegate {
+
   func childViewControllerDidPop() {
     router?.detachPage()
   }
@@ -76,6 +83,7 @@ extension NoteInteractor: NaviagationControllerDelegate {
 // MARK: - NoteInteractable
 
 extension NoteInteractor: NoteInteractable {
+
   func navigationControllerDidPush() {
     listener?.navigationViewControllerDidPush()
   }
@@ -96,16 +104,26 @@ private extension NoteInteractor {
         let viewModels = pages.map(PageListCellViewModel.init)
         self?.presenter.update(with: viewModels)
       }.store(in: &cancellables)
+
+    dependency.note
+      .receive(on: dependency.mainQueue)
+      .sink { [weak self] note in
+        self?.presenter.updateTitle(note?.title)
+        self?.getPages(noteID: note?.id)
+      }.store(in: &cancellables)
   }
 
-  func getPages(noteID: String) {
-    dependency.pageRepository.getPages(noteID: noteID)
-      .receive(on: dependency.mainQueue)
-      .sink(
-        receiveCompletion: { completion in
-          // error handling
-        },
-        receiveValue: { _ in }
-      ).store(in: &cancellables)
+  func getPages(noteID: String?) {
+    dependency.pageRepository.clearPages()
+    if let noteID = noteID {
+      dependency.pageRepository.getPages(noteID: noteID)
+        .receive(on: dependency.mainQueue)
+        .sink(
+          receiveCompletion: { completion in
+            // error handling
+          },
+          receiveValue: { _ in }
+        ).store(in: &cancellables)
+    }
   }
 }

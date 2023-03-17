@@ -6,6 +6,8 @@
 //
 
 import CombineSchedulers
+import CombineUtil
+import Entity
 import Foundation
 import ModernRIBs
 import Note
@@ -14,6 +16,7 @@ import PageImp
 import Repository
 
 public protocol NoteDependency: Dependency {
+  var note: ReadOnlyCurrentValuePublisher<Note?> { get }
   var mainQueue: AnySchedulerOf<DispatchQueue> { get }
   var pageRepository: PageRepository { get }
 }
@@ -22,6 +25,7 @@ final class NoteComponent: Component<NoteDependency>,
                            PageDependency,
                            NoteInteractorDependency {
 
+  var note: ReadOnlyCurrentValuePublisher<Note?> { dependency.note }
   var mainQueue: AnySchedulerOf<DispatchQueue> { dependency.mainQueue }
   var pageRepository: PageRepository { dependency.pageRepository }
 }
@@ -30,6 +34,7 @@ final class NoteComponent: Component<NoteDependency>,
 
 public final class NoteBuilder: Builder<NoteDependency>,
                                 NoteBuildable {
+  
   public override init(dependency: NoteDependency) {
     super.init(dependency: dependency)
   }
