@@ -17,9 +17,11 @@ public protocol PageRepository: AnyObject {
 
   func getPages(noteID: String) -> AnyPublisher<[Page], Error>
   func addPage(noteID: String, question: String, answer: String?) -> AnyPublisher<Page, Error>
+  func clearPages()
 }
 
 public final class PageRepositoryImp: PageRepository {
+
   public var authorization: String
   public var pages: ReadOnlyCurrentValuePublisher<[Page]> { _pages }
 
@@ -77,5 +79,9 @@ public final class PageRepositoryImp: PageRepository {
         }
       )
       .eraseToAnyPublisher()
+  }
+
+  public func clearPages() {
+    _pages.send([])
   }
 }
