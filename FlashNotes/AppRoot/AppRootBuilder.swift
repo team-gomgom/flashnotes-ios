@@ -29,7 +29,7 @@ final class AppRootComponent: Component<AppRootDependency>,
     #if DEBUG
     let configuration = URLSessionConfiguration.ephemeral
     configuration.protocolClasses = [MockURLProtocol.self]
-    MockURLProtocol.setup()
+    MockURLProtocol.setup(baseURL: Environment.serverBaseURL)
     #else
     let configuration = URLSessionConfiguration.default
     #endif

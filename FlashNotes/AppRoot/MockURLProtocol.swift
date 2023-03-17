@@ -12,13 +12,16 @@ enum MockSessionError: Error {
 }
 
 struct MockRequest: Hashable {
-  let path: String
+  let url: URL
   let method: String
 }
 
 typealias MockResponse = (statusCode: Int, data: Data?)
 
 final class MockURLProtocol: URLProtocol {
+
+  static var baseURL: String!
+
   static var successMock: [MockRequest: MockResponse] = [:]
   static var failureErrors: [MockRequest: Error] = [:]
 
@@ -31,11 +34,12 @@ final class MockURLProtocol: URLProtocol {
   }
 
   override func startLoading() {
-    guard let path = request.url?.path, let method = request.httpMethod else {
+    guard let url = request.url, let method = request.httpMethod else {
       client?.urlProtocolDidFinishLoading(self)
       return
     }
-    let mockRequest = MockRequest(path: path, method: method)
+
+    let mockRequest = MockRequest(url: url, method: method)
     if let mockResponse = Self.successMock[mockRequest] {
 
       let urlResponse = HTTPURLResponse(

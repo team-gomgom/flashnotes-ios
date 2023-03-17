@@ -8,7 +8,8 @@
 import Foundation
 
 extension MockURLProtocol {
-  static func setup() {
+  static func setup(baseURL: String) {
+    self.baseURL = baseURL
     setupGetNote()
     setupAddNote()
     setupGetPage()
@@ -40,7 +41,7 @@ private extension MockURLProtocol {
         ]
       ]
     ]
-    setupSuccessMock("/api/v1/note", "GET", response)
+    setupSuccessMock(path: "/api/v1/note", method: "GET", response: response)
   }
 
   static func setupAddNote() {
@@ -51,7 +52,7 @@ private extension MockURLProtocol {
         ],
       ]
     ]
-    setupSuccessMock("/api/v1/note", "POST", response)
+    setupSuccessMock(path: "/api/v1/note", method: "POST", response: response)
   }
 
   static func setupGetPage() {
@@ -75,7 +76,10 @@ private extension MockURLProtocol {
         ]
       ]
     ]
-    setupSuccessMock("/api/v1/page", "GET", response)
+    let queryParameters: [String: Any] = [
+      "noteId": "a62916bebffc46feb731905631c96236"
+    ]
+    setupSuccessMock(path: "/api/v1/page", method: "GET", queryParameters: queryParameters, response: response)
   }
 
   static func setupAddPage() {
@@ -86,12 +90,29 @@ private extension MockURLProtocol {
         ],
       ]
     ]
-    setupSuccessMock("/api/v1/page", "POST", response)
+    setupSuccessMock(path: "/api/v1/page", method: "POST", response: response)
   }
 
-  static func setupSuccessMock(_ path: String, _ method: String, _ response: [String: Any]) {
-    let request = MockRequest(path: path, method: method)
-    let responseData = try! JSONSerialization.data(withJSONObject: response)
-    successMock[request] = (200, responseData)
+  static func setupSuccessMock(
+    path: String,
+    method: String,
+    queryParameters: [String: Any]? = nil,
+    response: [String: Any]
+  ) {
+    let fullPath = baseURL + path
+    if var urlComponents = URLComponents(string: fullPath) {
+      if let queryParameters = queryParameters {
+        let queryItems = queryParameters.map { key, value in
+          URLQueryItem(name: key, value: "\(value)")
+        }
+        urlComponents.queryItems = queryItems
+      }
+
+      if let url = urlComponents.url {
+        let request = MockRequest(url: url, method: method)
+        let responseData = try! JSONSerialization.data(withJSONObject: response)
+        successMock[request] = (200, responseData)
+      }
+    }
   }
 }
