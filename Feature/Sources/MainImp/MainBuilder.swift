@@ -6,6 +6,8 @@
 //
 
 import CombineSchedulers
+import CombineUtil
+import Entity
 import Foundation
 import Main
 import ModernRIBs
@@ -26,9 +28,12 @@ final class MainComponent: Component<MainDependency>,
                            NoteDependency,
                            MainInteractorDependency {
 
+  var note: ReadOnlyCurrentValuePublisher<Note?> { _note }
   var mainQueue: AnySchedulerOf<DispatchQueue> { dependency.mainQueue }
   var noteRepository: NoteRepository { dependency.noteRepository }
   var pageRepository: PageRepository { dependency.pageRepository }
+
+  let _note = CurrentValuePublisher<Note?>(nil)
 }
 
 // MARK: - Builder
