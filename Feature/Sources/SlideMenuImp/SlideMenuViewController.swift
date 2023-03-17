@@ -13,7 +13,7 @@ import UIKit
 protocol SlideMenuPresentableListener: AnyObject {
   func didTapAddNoteButton()
   func didTapSettingButton()
-  func didSelectItem(at index: Int)
+  func didSelectItem(at row: Int)
 }
 
 final class SlideMenuViewController: UIViewController,
@@ -103,6 +103,7 @@ final class SlideMenuViewController: UIViewController,
 extension SlideMenuViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     listener?.didSelectItem(at: indexPath.row)
+    tableView.deselectRow(at: indexPath, animated: true)
   }
 }
 

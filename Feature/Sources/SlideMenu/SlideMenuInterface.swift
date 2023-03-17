@@ -5,6 +5,7 @@
 //  Created by 정동천 on 2023/02/15.
 //
 
+import Entity
 import ModernRIBs
 
 public protocol SlideMenuBuildable: Buildable {
@@ -12,5 +13,6 @@ public protocol SlideMenuBuildable: Buildable {
 }
 
 public protocol SlideMenuListener: AnyObject {
+  func didSelectNote(_ note: Note)
   func didTapAddNoteButton()
 }
