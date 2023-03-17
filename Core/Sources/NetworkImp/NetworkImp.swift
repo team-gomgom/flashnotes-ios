@@ -10,6 +10,7 @@ import Foundation
 import Network
 
 public final class NetworkImp: Network {
+
   private let session: URLSession
 
   public init(session: URLSession) {
@@ -37,6 +38,7 @@ public final class NetworkImp: Network {
 // MARK: - Requestable + Utils
 
 private extension Requestable {
+
   func urlRequest() throws -> URLRequest {
     let url = try url()
     var urlRequest = URLRequest(url: url)
@@ -48,6 +50,10 @@ private extension Requestable {
     urlRequest.httpMethod = method.rawValue
     headers?.forEach { key, value in
       urlRequest.setValue(value, forHTTPHeaderField: key)
+    }
+
+    if let authorization = authorization {
+      urlRequest.setValue(authorization, forHTTPHeaderField: "Authorization")
     }
 
     return urlRequest
@@ -65,9 +71,7 @@ private extension Requestable {
         queryItems.append(URLQueryItem(name: key, value: "\(value)"))
       }
     }
-    if let authorization = authorization {
-      queryItems.append(URLQueryItem(name: "Authorization", value: authorization))
-    }
+
     urlComponents.queryItems = queryItems.isEmpty ? nil : queryItems
 
     guard let url = urlComponents.url else {
@@ -81,6 +85,7 @@ private extension Requestable {
 // MARK: - Encodable + Utils
 
 private extension Encodable {
+  
   func toDictionary() throws -> [String: Any]? {
     let data = try JSONEncoder().encode(self)
     let jsonObject = try JSONSerialization.jsonObject(with: data)
