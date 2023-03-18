@@ -101,6 +101,10 @@ extension NoteViewController: NotePresentable {
   func update(with viewModels: [PageListCellViewModel]) {
     pageListView.viewModels = viewModels
   }
+
+  func updateTitle(_ title: String?) {
+    self.title = title
+  }
 }
 
 // MARK: - NoteManagement

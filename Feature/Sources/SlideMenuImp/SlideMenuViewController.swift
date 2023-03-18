@@ -13,11 +13,12 @@ import UIKit
 protocol SlideMenuPresentableListener: AnyObject {
   func didTapAddNoteButton()
   func didTapSettingButton()
-  func didSelectItem(at index: Int)
+  func didSelectItem(at row: Int)
 }
 
 final class SlideMenuViewController: UIViewController,
                                      SlideMenuViewControllable {
+  
   weak var listener: SlideMenuPresentableListener?
 
   private let noteListView = NoteListView()
@@ -101,6 +102,7 @@ final class SlideMenuViewController: UIViewController,
 // MARK: - UITableViewDelegate
 
 extension SlideMenuViewController: UITableViewDelegate {
+
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     listener?.didSelectItem(at: indexPath.row)
   }
@@ -109,7 +111,13 @@ extension SlideMenuViewController: UITableViewDelegate {
 // MARK: - SlideMenuPresentable
 
 extension SlideMenuViewController: SlideMenuPresentable {
+
   func update(with viewModels: [NoteListCellViewModel]) {
     noteListView.viewModels = viewModels
+  }
+
+  func updateSelectedRow(at row: Int) {
+    let indexPath = IndexPath(row: row, section: 0)
+    noteListView.selectRow(at: indexPath, animated: false, scrollPosition: .middle)
   }
 }

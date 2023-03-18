@@ -6,7 +6,9 @@
 //
 
 import Combine
+import CombineUtil
 import CombineSchedulers
+import Entity
 import Foundation
 import Main
 import ModernRIBs
@@ -26,15 +28,19 @@ protocol MainPresentable: Presentable {
 
   func updateGestureEnabledState(_ state: Bool)
   func presentNoteCreation()
+  func collapseSlideMenu()
 }
 
 protocol MainInteractorDependency {
+  var _selectedNote: CurrentValuePublisher<Note?> { get }
   var mainQueue: AnySchedulerOf<DispatchQueue> { get }
   var noteRepository: NoteRepository { get }
+  var pageRepository: PageRepository { get }
 }
 
 final class MainInteractor: PresentableInteractor<MainPresentable>,
                             MainInteractable {
+
   weak var router: MainRouting?
   weak var listener: MainListener?
 
@@ -49,6 +55,8 @@ final class MainInteractor: PresentableInteractor<MainPresentable>,
     super.init(presenter: presenter)
 
     presenter.listener = self
+
+    bind()
   }
 
   override func didBecomeActive() {
@@ -62,13 +70,18 @@ final class MainInteractor: PresentableInteractor<MainPresentable>,
 // MARK: - MainPresentableListener
 
 extension MainInteractor: MainPresentableListener {
+
   func createNote(title: String) {
     dependency.noteRepository.addNote(title: title)
+      .receive(on: dependency.mainQueue)
       .sink(
         receiveCompletion: { completion in
           // error handling
         },
-        receiveValue: { _ in }
+        receiveValue: { [weak self] note in
+          self?.dependency._selectedNote.send(note)
+          self?.presenter.collapseSlideMenu()
+        }
       ).store(in: &cancellables)
   }
 }
@@ -76,6 +89,7 @@ extension MainInteractor: MainPresentableListener {
 // MARK: - NoteListener
 
 extension MainInteractor: NoteListener {
+
   func navigationViewControllerDidPush() {
     presenter.updateGestureEnabledState(false)
   }
@@ -88,7 +102,27 @@ extension MainInteractor: NoteListener {
 // MARK: - SlideMenuListener
 
 extension MainInteractor: SlideMenuListener {
+
+  func didSelectNote(_ note: Note) {
+    dependency._selectedNote.send(note)
+    dependency.pageRepository.clearPages()
+    presenter.collapseSlideMenu()
+  }
+
   func didTapAddNoteButton() {
     presenter.presentNoteCreation()
+  }
+}
+
+// MARK: - Private
+
+private extension MainInteractor {
+
+  func bind() {
+    dependency.noteRepository.notes
+      .filter(\.isEmpty)
+      .sink { [weak self] _ in
+        self?.dependency._selectedNote.send(nil)
+      }.store(in: &cancellables)
   }
 }
