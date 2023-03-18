@@ -128,8 +128,10 @@ let package = Package(
         name: "PageImp",
         dependencies: [
           "Entity",
-          "Page",
           "ModernRIBs",
+          "Page",
+          "Repository",
+          .product(name: "CombineUtil", package: "Core"),
           .product(name: "Resource", package: "Core"),
           .product(name: "FlashNotesUI", package: "UI"),
         ]
