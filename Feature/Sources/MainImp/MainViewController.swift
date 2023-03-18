@@ -45,6 +45,7 @@ extension MainViewController: MainViewControllable {
     let navigationController = UINavigationController(rootViewController: viewController)
     let navigationBarAppearance = UINavigationBarAppearance()
     navigationBarAppearance.configureWithTransparentBackground()
+    navigationBarAppearance.backgroundColor = viewController.view.backgroundColor
     navigationController.navigationBar.standardAppearance = navigationBarAppearance
     navigationController.navigationBar.scrollEdgeAppearance = navigationBarAppearance
     slideMenuViewController = navigationController
