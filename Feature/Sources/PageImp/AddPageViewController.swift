@@ -21,7 +21,7 @@ final class AddPageViewController: UIViewController,
   private let titleView: UILabel = {
     let label = UILabel()
     label.textColor = .secondarySystemBackground
-    label.font = .systemFont(ofSize: 17, weight: .bold)
+    label.font = .preferredFont(forTextStyle: .headline)
     return label
   }()
 
@@ -32,7 +32,7 @@ final class AddPageViewController: UIViewController,
       target: self,
       action: #selector(rightBarButtonDidTap)
     )
-    button.tintColor = .white
+    button.tintColor = .secondarySystemBackground
     return button
   }()
 
@@ -44,6 +44,12 @@ final class AddPageViewController: UIViewController,
 
     setup()
     setupLayout()
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+
+    _ = questionView.becomeFirstResponder()
   }
 }
 

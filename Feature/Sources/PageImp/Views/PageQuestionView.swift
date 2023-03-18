@@ -38,6 +38,10 @@ final class PageQuestionView: UIView {
     return textView
   }()
 
+  override func becomeFirstResponder() -> Bool {
+    questionTextView.becomeFirstResponder()
+  }
+
   init() {
     super.init(frame: .zero)
 
