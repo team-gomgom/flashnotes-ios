@@ -93,6 +93,10 @@ extension NoteInteractor: NoteInteractable {
   func navigationControllerDidPop() {
     listener?.navigationViewControllerDidPop()
   }
+
+  func addPageInteractorDidAddPage() {
+    router?.detachAddPage()
+  }
 }
 
 // MARK: - Private

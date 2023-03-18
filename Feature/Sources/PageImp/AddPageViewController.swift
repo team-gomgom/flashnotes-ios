@@ -9,7 +9,9 @@ import ModernRIBs
 import Resource
 import UIKit
 
-protocol AddPagePresentableListener: AnyObject {}
+protocol AddPagePresentableListener: AnyObject {
+  func doneButtonDidTap(withQuestion question: String, answer: String)
+}
 
 final class AddPageViewController: UIViewController,
                                    AddPageViewControllable {
@@ -87,6 +89,8 @@ extension AddPageViewController {
 
   @objc
   func rightBarButtonDidTap() {
-
+    let question = questionView.question
+    let answer = answerView.answer
+    listener?.doneButtonDidTap(withQuestion: question, answer: answer)
   }
 }

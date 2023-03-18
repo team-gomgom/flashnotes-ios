@@ -11,4 +11,6 @@ public protocol AddPageBuildable: Buildable {
   func build(withListener listener: AddPageListener) -> ViewableRouting
 }
 
-public protocol AddPageListener: AnyObject {}
+public protocol AddPageListener: AnyObject {
+  func addPageInteractorDidAddPage()
+}

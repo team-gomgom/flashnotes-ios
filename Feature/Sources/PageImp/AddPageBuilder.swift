@@ -5,19 +5,26 @@
 //  Created by 정동천 on 2023/03/19.
 //
 
+import CombineSchedulers
 import CombineUtil
 import Entity
+import Foundation
 import ModernRIBs
 import Page
+import Repository
 
 public protocol AddPageDependency: Dependency {
   var note: ReadOnlyCurrentValuePublisher<Note?> { get }
+  var mainQueue: AnySchedulerOf<DispatchQueue> { get }
+  var pageRepository: PageRepository { get }
 }
 
 final class AddPageComponent: Component<AddPageDependency>,
                               AddPageInteractorDependency {
 
   var note: ReadOnlyCurrentValuePublisher<Note?> { dependency.note }
+  var mainQueue: AnySchedulerOf<DispatchQueue> { dependency.mainQueue }
+  var pageRepository: PageRepository { dependency.pageRepository }
 }
 
 // MARK: - Builder
