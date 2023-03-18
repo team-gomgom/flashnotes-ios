@@ -7,6 +7,8 @@
 
 import Combine
 import CombineSchedulers
+import CombineUtil
+import Entity
 import Foundation
 import ModernRIBs
 import Repository
@@ -18,9 +20,11 @@ protocol SlideMenuPresentable: Presentable {
   var listener: SlideMenuPresentableListener? { get set }
 
   func update(with viewModels: [NoteListCellViewModel])
+  func updateSelectedRow(at row: Int)
 }
 
 protocol SlideMenuInteractorDependency {
+  var selectedNote: ReadOnlyCurrentValuePublisher<Note?> { get }
   var mainQueue: AnySchedulerOf<DispatchQueue> { get }
   var noteRepository: NoteRepository { get }
 }
@@ -75,6 +79,14 @@ private extension SlideMenuInteractor {
       .sink { [weak self] notes in
         let viewModels = notes.map(NoteListCellViewModel.init)
         self?.presenter.update(with: viewModels)
+      }.store(in: &cancellables)
+
+    dependency.selectedNote.compactMap { $0 }
+      .receive(on: dependency.mainQueue)
+      .sink { [weak self] note in
+        if let row = self?.dependency.noteRepository.notes.value.lastIndex(of: note) {
+          self?.presenter.updateSelectedRow(at: row)
+        }
       }.store(in: &cancellables)
   }
 

@@ -6,24 +6,25 @@
 //
 
 import CombineSchedulers
+import CombineUtil
+import Entity
 import Foundation
 import ModernRIBs
 import Repository
 import SlideMenu
 
 public protocol SlideMenuDependency: Dependency {
+  var selectedNote: ReadOnlyCurrentValuePublisher<Note?> { get }
   var mainQueue: AnySchedulerOf<DispatchQueue> { get }
   var noteRepository: NoteRepository { get }
 }
 
 final class SlideMenuComponent: Component<SlideMenuDependency>,
                                 SlideMenuInteractorDependency {
-  var mainQueue: AnySchedulerOf<DispatchQueue> {
-    dependency.mainQueue
-  }
-  var noteRepository: NoteRepository {
-    dependency.noteRepository
-  }
+
+  var selectedNote: ReadOnlyCurrentValuePublisher<Note?> { dependency.selectedNote }
+  var mainQueue: AnySchedulerOf<DispatchQueue> { dependency.mainQueue }
+  var noteRepository: NoteRepository { dependency.noteRepository }
 }
 
 // MARK: - Builder

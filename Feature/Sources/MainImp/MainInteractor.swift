@@ -32,7 +32,7 @@ protocol MainPresentable: Presentable {
 }
 
 protocol MainInteractorDependency {
-  var _note: CurrentValuePublisher<Note?> { get }
+  var _selectedNote: CurrentValuePublisher<Note?> { get }
   var mainQueue: AnySchedulerOf<DispatchQueue> { get }
   var noteRepository: NoteRepository { get }
   var pageRepository: PageRepository { get }
@@ -73,11 +73,15 @@ extension MainInteractor: MainPresentableListener {
 
   func createNote(title: String) {
     dependency.noteRepository.addNote(title: title)
+      .receive(on: dependency.mainQueue)
       .sink(
         receiveCompletion: { completion in
           // error handling
         },
-        receiveValue: { _ in }
+        receiveValue: { [weak self] note in
+          self?.dependency._selectedNote.send(note)
+          self?.presenter.collapseSlideMenu()
+        }
       ).store(in: &cancellables)
   }
 }
@@ -100,7 +104,7 @@ extension MainInteractor: NoteListener {
 extension MainInteractor: SlideMenuListener {
 
   func didSelectNote(_ note: Note) {
-    dependency._note.send(note)
+    dependency._selectedNote.send(note)
     dependency.pageRepository.clearPages()
     presenter.collapseSlideMenu()
   }
@@ -118,7 +122,7 @@ private extension MainInteractor {
     dependency.noteRepository.notes
       .filter(\.isEmpty)
       .sink { [weak self] _ in
-        self?.dependency._note.send(nil)
+        self?.dependency._selectedNote.send(nil)
       }.store(in: &cancellables)
   }
 }

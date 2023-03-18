@@ -28,12 +28,12 @@ final class MainComponent: Component<MainDependency>,
                            NoteDependency,
                            MainInteractorDependency {
 
-  var note: ReadOnlyCurrentValuePublisher<Note?> { _note }
+  var selectedNote: ReadOnlyCurrentValuePublisher<Note?> { _selectedNote }
   var mainQueue: AnySchedulerOf<DispatchQueue> { dependency.mainQueue }
   var noteRepository: NoteRepository { dependency.noteRepository }
   var pageRepository: PageRepository { dependency.pageRepository }
 
-  let _note = CurrentValuePublisher<Note?>(nil)
+  let _selectedNote = CurrentValuePublisher<Note?>(nil)
 }
 
 // MARK: - Builder

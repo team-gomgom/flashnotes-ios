@@ -16,7 +16,7 @@ import PageImp
 import Repository
 
 public protocol NoteDependency: Dependency {
-  var note: ReadOnlyCurrentValuePublisher<Note?> { get }
+  var selectedNote: ReadOnlyCurrentValuePublisher<Note?> { get }
   var mainQueue: AnySchedulerOf<DispatchQueue> { get }
   var pageRepository: PageRepository { get }
 }
@@ -25,7 +25,7 @@ final class NoteComponent: Component<NoteDependency>,
                            PageDependency,
                            NoteInteractorDependency {
 
-  var note: ReadOnlyCurrentValuePublisher<Note?> { dependency.note }
+  var note: ReadOnlyCurrentValuePublisher<Note?> { dependency.selectedNote }
   var mainQueue: AnySchedulerOf<DispatchQueue> { dependency.mainQueue }
   var pageRepository: PageRepository { dependency.pageRepository }
 }
