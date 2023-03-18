@@ -9,6 +9,9 @@ import Resource
 import UIKit
 
 final class PageQuestionView: UIView {
+
+  var question: String { questionTextView.text ?? "" }
+
   private let questionImageView: UIImageView = {
     let imageView = UIImageView()
     let image = Images.icQWhite.image.withRenderingMode(.alwaysTemplate)

@@ -9,6 +9,9 @@ import Resource
 import UIKit
 
 final class PageAnswerView: UIView {
+
+  var answer: String { answerTextView.text ?? "" }
+
   private let answerImageView: UIImageView = {
     let imageView = UIImageView()
     let image = Images.icAOrange.image.withRenderingMode(.alwaysTemplate)

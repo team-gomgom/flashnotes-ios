@@ -18,6 +18,8 @@ import RIBsUtil
 protocol NoteRouting: ViewableRouting {
   func attachPage()
   func detachPage()
+  func attachAddPage()
+  func detachAddPage()
 }
 
 protocol NotePresentable: Presentable {
@@ -65,7 +67,7 @@ extension NoteInteractor: NotePresentableListener {
   func didTapTrainingButton() {}
 
   func didTapAddNote() {
-    router?.attachPage()
+    router?.attachAddPage()
   }
 
   func didTapDeleteNote() {}
@@ -76,7 +78,7 @@ extension NoteInteractor: NotePresentableListener {
 extension NoteInteractor: NaviagationControllerDelegate {
 
   func childViewControllerDidPop() {
-    router?.detachPage()
+    router?.detachAddPage()
   }
 }
 
@@ -90,6 +92,10 @@ extension NoteInteractor: NoteInteractable {
 
   func navigationControllerDidPop() {
     listener?.navigationViewControllerDidPop()
+  }
+
+  func addPageInteractorDidAddPage() {
+    router?.detachAddPage()
   }
 }
 
