@@ -12,7 +12,6 @@ import UIKit
 protocol AddPagePresentableListener: AnyObject {}
 
 final class AddPageViewController: UIViewController,
-                                   AddPagePresentable,
                                    AddPageViewControllable {
 
   weak var listener: AddPagePresentableListener?
@@ -20,7 +19,7 @@ final class AddPageViewController: UIViewController,
   private let titleView: UILabel = {
     let label = UILabel()
     label.textColor = .secondarySystemBackground
-    label.font = .systemFont(ofSize: 17, weight: .semibold)
+    label.font = .systemFont(ofSize: 17, weight: .bold)
     return label
   }()
 
@@ -43,6 +42,15 @@ final class AddPageViewController: UIViewController,
 
     setup()
     setupLayout()
+  }
+}
+
+// MARK: - AddPagePresentable
+
+extension AddPageViewController: AddPagePresentable {
+
+  func updateTitle(_ title: String?) {
+    titleView.text = title
   }
 }
 
