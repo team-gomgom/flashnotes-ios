@@ -23,6 +23,7 @@ public protocol NoteDependency: Dependency {
 
 final class NoteComponent: Component<NoteDependency>,
                            PageDependency,
+                           AddPageDependency,
                            NoteInteractorDependency {
 
   var note: ReadOnlyCurrentValuePublisher<Note?> { dependency.selectedNote }
@@ -45,10 +46,12 @@ public final class NoteBuilder: Builder<NoteDependency>,
     let interactor = NoteInteractor(presenter: viewController, dependency: component)
     interactor.listener = listener
     let pageBuilder = PageBuilder(dependency: component)
+    let addPageBuilder = AddPageBuilder(dependency: component)
     return NoteRouter(
       interactor: interactor,
       viewController: viewController,
-      pageBuildable: pageBuilder
+      pageBuildable: pageBuilder,
+      addPageBuildable: addPageBuilder
     )
   }
 }
